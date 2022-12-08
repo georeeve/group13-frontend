@@ -1,7 +1,7 @@
 #Entry point for website
 
 #importing Flask
-from flask import Flask
+from flask import Flask, request, make_response, render_template
 
 #importing views/routes
 from home import home
@@ -23,6 +23,7 @@ app.register_blueprint(profile, url_prefix= "/profile")
 app.register_blueprint(login, url_prefix ="/login")
 
 app.register_blueprint(register, url_prefix ="/register")
+
 
 #setting port
 if __name__ == '__main__':
