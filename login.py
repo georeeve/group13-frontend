@@ -16,21 +16,20 @@ def signInLanding():
     
 @login.route("/success", methods = ['POST'])
 def endpoint():
-    response = requests.post('http://localhost:8080/api/v1/login', data={
+    response = requests.post('http://localhost:8080/api/v1/login', json={
         "email": request.form["email"],
         "password": request.form["password"] 
     })
     
     
     response_header= response.json()
-    
+    print(response_header)
     token = response_header["token"]
     args = request.args
-    email = args.get()
-    res = make_response(render_template("userProfile.html", name=email))
+    res = make_response(render_template("userProfile.html"))
     res.set_cookie("token",token)
     print(token)
-    print(res)
+
     return res
     
     
