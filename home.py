@@ -10,4 +10,4 @@ home = Blueprint(__name__, "home")
 @home.route("/")
 def landing():
     #allows for passing of html to Python, can also pass variables INTO the html
-    return render_template("index.html", name="Tyler")
+    return render_template("index.html")

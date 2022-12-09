@@ -9,24 +9,24 @@
 </head>
 <body>
     <h1>Please Sign In Below</h1>
-    <form action="action_page.php" method="post">
+    <form action='http://localhost:8080/api/v1/login' method ='POST'>
       
         <div class="container">
-          <label for="uname"><b>Username</b></label>
-          <input type="text" placeholder="Enter Username" name="uname" required>
+          <label for="email"><b>Email</b></label>
+          <input type="text" placeholder="Enter Email" name="email" required>
       
-          <label for="psw"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="psw" required>
+          <label for="password"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="password" required>
       
-          <button type="submit">Login</button>
+          <button type="submit" >Login</button>
           <label>
             <input type="checkbox" checked="checked" name="remember"> Remember me
           </label>
         </div>
         <div class="container" style="background-color:#f1f1f1">
-          <button type="button" class="cancelbtn">Cancel</button>
-          <span class="psw"> <a href="#">Sign Up Here</a></span>
-          <span class="psw">Forgot <a href="#">Password</a></span>
+          <button type="button" class="cancelbtn" action={{url_for('home.landing')}}>Cancel</button>
+          <span class="password"> <a href="{{url_for('register.registering')}}">Sign Up Here</a></span>
+          <span class="password">Forgot <a href="#">Password</a></span>
         </div>
       </form>
 </body>
