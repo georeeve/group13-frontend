@@ -6,8 +6,6 @@ from flask import Flask, request, make_response, render_template
 #importing views/routes
 from home import home
 
-from userProfile import profile
-
 from login import login
 
 from register import register
@@ -18,7 +16,6 @@ app = Flask(__name__)
 #calling route
 app.register_blueprint(home, url_prefix="/home")
 
-app.register_blueprint(profile, url_prefix= "/profile")
 
 app.register_blueprint(login, url_prefix ="/login")
 
