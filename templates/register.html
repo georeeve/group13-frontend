@@ -9,7 +9,7 @@
 </head>
 <body>
     <div><h1>Please Register Below!</h1>
-        <form  method="post">
+        <form action='/register/createuser' method="post">
       
             <div class="container">
               <label for="email"><b>Email</b></label>
@@ -25,11 +25,8 @@
               <input type="text" placeholder="Enter Last Name" name="lastName" id="lastName" required>
 
               <label for="dob"><b>Date of Birth</b></label>
-              <input type="text" placeholder="Enter your Date of Birth" name="dob" id="dob" required>
+              <input type="date" placeholder="Enter your Date of Birth" name="dob" id="dob" required>
 
-              <label for="pcode"><b>PostCode</b></label>
-              <input type="text" placeholder="Enter your PostCode" name="pcode" id="pcode" required>
-            
               <button type="submit">Login</button>
               <label>
                 <input type="checkbox" checked="checked" name="remember"> Remember me
