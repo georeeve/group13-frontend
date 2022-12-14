@@ -16,3 +16,5 @@ def signup():
     new_user = User(
         email=data.get('email')
     )
+
+

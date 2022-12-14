@@ -10,6 +10,8 @@ from login import login
 
 from register import register
 
+from apiRouting import apiRouting
+
 #initialising app
 app = Flask(__name__)
 
@@ -20,6 +22,8 @@ app.register_blueprint(home, url_prefix="/home")
 app.register_blueprint(login, url_prefix ="/login")
 
 app.register_blueprint(register, url_prefix ="/register")
+
+app.register_blueprint(apiRouting, url_prefix ="/apiRouting")
 
 
 #setting port
