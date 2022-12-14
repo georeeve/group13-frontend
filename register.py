@@ -22,8 +22,10 @@ def create_user():
     })
 
     if response.status_code == 400:
-        res = make_response(render_template("error400.html"))
-        return res
+        response_body = response.json()
+        msg = response_body["message"]
+        res = make_response(render_template("register.html", msg=msg))
+        return res, msg
     
     else:
         response_header= response.json()
