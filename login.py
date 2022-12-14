@@ -1,5 +1,6 @@
 #Setting up routes
 from flask import Blueprint, render_template, request, jsonify, redirect, url_for, make_response
+import json
 
 import requests
 
@@ -15,10 +16,14 @@ def signInLanding():
 
 @login.route("/session", methods = ['POST'])
 def signin():
-    response = requests.post('http://localhost:8080/api/v1/users/login', json={
+
+    msg = ""
+
+    response = requests.post('http://localhost:8080/api/v1/session', json={
         "email": request.form["email"],
         "password": request.form["password"] 
     })
+
 
     if response.status_code == 200:
      
@@ -31,7 +36,8 @@ def signin():
         return res, token
 
     elif response.status_code == 401:
-        res = make_response(render_template("incorrect.html"))
+        msg = "Incorrect email and/or password, please try again"
+        res = make_response(render_template("login.html", msg=msg))
         return res
 
 
