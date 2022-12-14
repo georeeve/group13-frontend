@@ -1,0 +1,20 @@
+.container_items{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.card_item{
+padding: 2px 16px;
+width: 250px;
+border: solid 2px black;
+border-radius: 5px;
+}
+
+.product_image{
+    background-color: gray;
+    width: 150px;
+    height: 150px;
+    border-radius: 5px 5px 5px 5px;
+}
+

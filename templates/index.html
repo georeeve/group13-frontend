@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+
     <title>Grocerys</title>
 </head>
 <body>
@@ -16,11 +18,19 @@
         <a href={{url_for('register.registering')}}> Sign Up Here!</a>
     </p> 
     
-    <ul>
+    
+    <!-- item card -->
+    <div class="container_items">
         {% for item in items %}
-        <li>{{ item.name }}</li>
+        <div class="card_item">
+            <div class="product_image"></div>
+            <!-- <img class="product_image"> -->
+            <h3><b>{{item.name}}</b></h3>
+            <p>{{item.description}}</p>
+            <p>£{{item.price}}</p>
+        </div>
         {% endfor %}
-    </ul>
-    <!-- unordered list -->
+    </div>
+   <!-- item card -->
 </body>
 </html>
