@@ -8,7 +8,7 @@ from register import register
 
 login = Blueprint(__name__, "login")
 
-@login.route("/", methods = ['GET'])
+@login.route("/")
 def signInLanding():
  
     
@@ -33,16 +33,30 @@ def signin():
         print(response_header)
         token = response_header["token"]
         res = make_response(render_template("userProfile.html"))
-        res.set_cookie("token",token)
+  
         print(token)
         
-
         response = requests.get("http://localhost:8080/api/v1/user", headers={"Authorization": "Bearer " + token})
-        print (response.json())
-        firstName = response.json()['firstName']
-        res = render_template('userProfile.html', firstName=firstName)
+        response_name = response.json()
         
-        return res, token
+        
+        if response_name["admin"] == True:
+            
+            
+            print (response.json())
+            firstName = response.json()['firstName']
+            adminRes = make_response(render_template('userProfileAdmin.html', firstName=firstName))
+            adminRes.set_cookie("token", token)
+            
+            return adminRes
+
+        else:
+            print (response.json())
+            firstName = response.json()['firstName']
+            userRes = make_response(render_template('userProfile.html', firstName=firstName))
+            userRes.set_cookie("token",token)
+        
+            return userRes
 
     elif response.status_code == 401:
         msg = "Incorrect email and/or password, please try again"
