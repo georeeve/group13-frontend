@@ -24,6 +24,23 @@
          %  for categorie in Categories %
         </div> -->
     </div>
+    <div class="dropdown">
+        <button class="dropbtn">Dropdown</button>
+        <div class="dropdown-content">
+          <a href="#">Produce</a>
+          <a href="#">Meat and Seafood</a>
+          <a href="#">Dairy</a>
+          <a href="#">Frozen Foods</a>
+          <a href="#">Bakery</a>
+          <a href="#">Beverages</a>
+        <a href="#">Canned Goods and Dry Goods</a>
+          <a href="#">Condiments and Sauces</a>
+          <a href="#">Personal Care and Household Items</a>
+          <a href="#">Snacks and Candy</a>
+          <a href="#">Deli</a>
+          <a href="#">International Foods</a>
+        </div>
+      </div>
     <!-- item card -->
     <div class="container_items">
         {% for item in items %}
@@ -33,6 +50,8 @@
             <h3><b>{{item.name}}</b></h3>
             <p>{{item.description}}</p>
             <p>£{{item.price}}</p>
+            <button>Add</button>
+            <input type="number" id="number" value="0" min="0" max="10">
         </div>
         {% endfor %}
     </div>
