@@ -33,6 +33,12 @@ def create_user():
         token = response_header["token"]
         res = make_response(render_template("userProfile.html"))
         res.set_cookie("token",token)
+        
+        response = requests.get("http://localhost:8080/api/v1/user", headers={"Authorization": "Bearer " + token})
+        print (response.json())
+        firstName = response.json()['firstName']
+        res = render_template('userProfile.html', firstName=firstName)
+        
         print(token)
         return res, token
 
