@@ -15,5 +15,12 @@
     <p>No Account?
         <a href={{url_for('register.registering')}}> Sign Up Here!</a>
     </p> 
+    
+    <ul>
+        {% for item in items %}
+        <li>{{ item.name }}</li>
+        {% endfor %}
+    </ul>
+    <!-- unordered list -->
 </body>
 </html>
