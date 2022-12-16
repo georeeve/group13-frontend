@@ -17,7 +17,7 @@ from checkout import checkout
 app = Flask(__name__)
 
 #calling route
-app.register_blueprint(home, url_prefix="/home")
+app.register_blueprint(home, url_prefix="/")
 
 
 app.register_blueprint(login, url_prefix ="/login")
