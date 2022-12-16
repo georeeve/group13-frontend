@@ -1,0 +1,11 @@
+<div class="container_items">
+  {% for item in items %}
+  <div class="card_item">
+    <div class="product_image"></div>
+    <!-- <img class="product_image"> -->
+    <h3><b>{{item.name}}</b></h3>
+    <p>{{item.description}}</p>
+    <p>£{{item.price}}</p>
+  </div>
+  {% endfor %}
+</div>
