@@ -1,11 +1,15 @@
-<header class="header d-flex justify-content-between">
-    <h1 class="header__title">Green Basket</h1>
+<header class="header d-flex justify-content-between align-items-center">
+    <div class="header__logo__container d-flex">
+        <img src={{ svg }} alt="green basket logo" class="header__logo">
+          <h1 class="header__title">
+              Green Basket</h1>
+    </div>
     <ul class="header__links__container d-flex align-items-center">
         <li class="header__links__list">
-            <a class="header__pagelinks__anchor" href={{url_for('login.signInLanding')}}>Sign In</a>
+            <a class="header__pagelinks__anchor btn" href={{url_for('login.signInLanding')}}>Sign In</a>
         </li>
         <li class="header__links__list">
-            <a class="header__pagelinks__anchor" href={{url_for('register.registering')}}>Register</a>
+            <a class="header__pagelinks__anchor btn" href={{url_for('register.registering')}}>Register</a>
         </li>
     </ul>
 </header>

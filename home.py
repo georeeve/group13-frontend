@@ -19,11 +19,16 @@ def getItems():
     args = request.args
     start = 0
     end = 24
+    length = len(items)
     if args.get('start') is not None:
         start = int(args.get('start'))
     if args.get('end') is not None:
         end = int(args.get('end'))
-    res = render_template('index.html', items=items, pages=pages, start=start, end=end)
+    if args.get('length') is not None:
+        length = int(args.get('length'))
+
+    svg = './static/assets/basket.svg'
+    res = render_template('index.html', items=items, pages=pages, start=start, end=end, length=length, svg=svg)
     return res
 
 # @home.route("/getitem")
