@@ -16,27 +16,41 @@
     <title>Grocerys</title>
   </head>
   <body>
-    {% include 'components/header.html' %} {% include
-    'components/products-nav.html' %}
-
-    <!-- <div class="dropdown">
-        <button> Categories</button>
-        <div class="dropdown-content" >
-         {# %  for categorie in Categories % #}
-        </div> 
-    </div> -->
+    {% include 'components/header.html' %}
+    <!-- products nav -->
+    {% include 'components/products-nav.html' %}
     <!-- item card -->
     <div class="container_items">
       {% for item in items %}
+      <!--  -->
+      {% if loop.index >= start and loop.index < end %}
       <div class="card_item">
         <div class="product_image"></div>
+        <p>{{args}}</p>
         <!-- <img class="product_image"> -->
         <h3><b>{{item.name}}</b></h3>
         <p>{{item.description}}</p>
         <p>£{{item.price}}</p>
       </div>
+      {% endif %}
+      <!--  -->
       {% endfor %}
     </div>
+
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+        {% for i in range(pages) %}
+        <li class="page-item">
+          <a class="page-link" href="?start={{i * 24}}&end={{i * 24 + 24}}"
+            >{{i + 1}}</a
+          >
+        </li>
+        {% endfor%}
+
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+      </ul>
+    </nav>
     <!-- item card -->
     {% include 'components/footer.html' %}
 
