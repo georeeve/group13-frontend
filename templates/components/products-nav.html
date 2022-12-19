@@ -8,27 +8,11 @@
     >
       Groceries
     </button>
-
-
-
-
-<!-- 
-    GET request to categories table,
-    save in local storage  add categories:
-    % for category of categories %
-    <li><a class="dropdown-item" href="#">categorie.name</a></li>
-    % endfor %
--->
-
-
-<ul class="dropdown-menu">
+  <ul class="dropdown-menu">
   {% for category in categories %}
-  <!--  -->
-  <li><a id= '{{category.id}}' class="dropdown-item" href="#">{{category.category}}</a></li>
-
+      <li><a id= '{{category.id}}' class="dropdown-item dropdown-categories" href="?category={{category.id}}">{{category.category}}</a></li>
   {% endfor %}
-
       <li><hr class="dropdown-divider" /></li>
       <li><a class="dropdown-item" href="#">All Food</a></li>
-    </ul>
+  </ul>
 </nav>
