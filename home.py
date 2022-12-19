@@ -1,5 +1,5 @@
 #Setting up routes
-from flask import Blueprint, render_template, request, jsonify, redirect, url_for, make_response
+from flask import Blueprint, render_template, request
 import requests
 import math
 #request allows us to do profile?name= in browser
