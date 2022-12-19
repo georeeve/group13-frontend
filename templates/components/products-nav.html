@@ -18,39 +18,12 @@
 -->
 
 <div class="container_items">
-  {% for categorie in categories %}
+  {% for category in categories %}
   <!--  -->
-  {% if loop.index >= start and loop.index < end %}
-  <div class="col-6 card_item category-{{item.category.id}} d-flex">
-    <div class="product_image"></div>
-    <p>{{args}}</p>
-    <!-- <img class="product_image"> -->
-    <h3><b>{{category.name}}</b></h3>
-    <p>{{item.description}}</p>
-    <p>£{{item.price}}</p>
-  </div>
-  {% endif %}
-  <!--  -->
-  {% endfor %}
-</div>
+  <li><a id= '{{category.id}}' class="dropdown-item" href="#">{{category.category}}</a></li>
 
-        <li><a class="dropdown-item" href="#">Produce</a></li>
-        <li><a class="dropdown-item" href="#">Meat and Seafood</a></li>
-        <li><a class="dropdown-item" href="#">Dairy</a></li>
-        <li><a class="dropdown-item" href="#">Frozen Foods</a></li>
-        <li><a class="dropdown-item" href="#">Bakery</a></li>
-        <li><a class="dropdown-item" href="#">Beverages</a></li>
-        <li><a class="dropdown-item" href="#">Canned Goods and Dry Goods</a></li>
-        <li><a class="dropdown-item" href="#">Condiments and Sauces</a></li>
-        <li><a class="dropdown-item" href="#">Personal Care and Household Items</a></li>
-        <li><a class="dropdown-item" href="#">Snacks and Candy</a></li>
-        <li><a class="dropdown-item" href="#">Deli</a></li>
-        <li><a class="dropdown-item" href="#">International Foods</a></li>
-        <li><a class="dropdown-item" href="#">Baby Products</a></li>
-        <li><a class="dropdown-item" href="#">Pet Supplies</a></li>
-        <li><a class="dropdown-item" href="#">Health and Wellness</a></li>
-        <li><a class="dropdown-item" href="#">Beauty and Personal Care</a></li>
-        <li><a class="dropdown-item" href="#">Flowers
+  {% endfor %}
+
       <li><hr class="dropdown-divider" /></li>
       <li><a class="dropdown-item" href="#">All Food</a></li>
     </ul>
