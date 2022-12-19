@@ -8,7 +8,10 @@
     >
       Groceries
     </button>
-    <ul class="dropdown-menu">
+
+
+
+
 <!-- 
     GET request to categories table,
     save in local storage  add categories:
@@ -17,7 +20,8 @@
     % endfor %
 -->
 
-<div class="container_items">
+
+<ul class="dropdown-menu">
   {% for category in categories %}
   <!--  -->
   <li><a id= '{{category.id}}' class="dropdown-item" href="#">{{category.category}}</a></li>
@@ -27,5 +31,4 @@
       <li><hr class="dropdown-divider" /></li>
       <li><a class="dropdown-item" href="#">All Food</a></li>
     </ul>
-  </div>
 </nav>
