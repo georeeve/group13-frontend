@@ -14,6 +14,8 @@ home = Blueprint(__name__, "home")
 def getItems():
     response = requests.get('http://localhost:8080/api/v1/items')
     # print (response.json())
+    # categoriesRes = requests.get('http://localhost:8080/api/v1/categories')
+    # categories = categoriesRes.json()
     items = response.json()
     pages = math.ceil(len(items)/24)
     args = request.args
@@ -34,6 +36,16 @@ def getItems():
 # @home.route("/getitem")
 # def get_items(items):
 #     results=[]
+
+
+#filter throught categories
+@home.route("/categories", methods = ['GET'])
+def getCategories():
+    response = requests.get('http://localhost:8080/api/v1/categories')
+    categories = response.json
+    res = render_template('product-nav.html', categories=categories)
+    return res
+    
 
 if __name__ == '__main__':
     home.run()
