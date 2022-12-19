@@ -1,23 +1,28 @@
 <header class="header d-flex justify-content-between align-items-center">
-    <div class="header__logo__container d-flex">
-        <img src={{ svg }} alt="green basket logo" class="header__logo">
-          <h1 class="header__title">
-              Green Basket</h1>
-    </div>
-    <!-- if not logged in render this -->
-    <ul class="header__links__container d-flex align-items-center">
-        <li class="header__links__list">
-            <a class="header__pagelinks__anchor btn" href={{url_for('login.signInLanding')}}>Sign In</a>
-        </li>
-        <li class="header__links__list">
-            <a class="header__pagelinks__anchor btn" href={{url_for('register.registering')}}>Register</a>
-        </li>
-    </ul>
+  <div class="header__logo__container d-flex">
+    <img src="{{ svg }}" alt="green basket logo" class="header__logo" />
+    <h1 class="header__title">Green Basket</h1>
+  </div>
 
-    <!-- basket -->
+  <ul class="header__links__container d-flex align-items-center">
+    <li class="header__links__list position-relative">
+      <a class="header__pagelinks__anchor btn" href="#">Basket  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+        4
+        <span class="visually-hidden">items in basket</span>
+      </span>
+      </button></a>
+    </li>
+  </ul>
 
-    <!-- else render this -->
-    <!-- take to profile -->
-    <!-- add log out -->
-    
+  {% if request.cookies.token %}
+  <!-- -->
+  {% include 'components/header-session.html' %}
+  <!--  -->
+  {% else %}
+  <!--  -->
+  {% include 'components/header-nosession.html' %}
+  <!--  -->
+  {% endif %}
+
+  <!-- basket -->
 </header>
