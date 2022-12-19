@@ -14,8 +14,8 @@ home = Blueprint(__name__, "home")
 def getItems():
     response = requests.get('http://localhost:8080/api/v1/items')
     # print (response.json())
-    categoriesRes = requests.get('http://localhost:8080/api/v1/categories')
-    categories = categoriesRes.json()
+    # categoriesRes = requests.get('http://localhost:8080/api/v1/categories')
+    # categories = categoriesRes.json()
     items = response.json()
     pages = math.ceil(len(items)/24)
     args = request.args
@@ -30,7 +30,7 @@ def getItems():
         length = int(args.get('length'))
 
     svg = './static/assets/basket.svg'
-    res = render_template('index.html', items=items, pages=pages, start=start, end=end, length=length, svg=svg, categories=categories)
+    res = render_template('index.html', items=items, pages=pages, start=start, end=end, length=length, svg=svg)
     return res
 
 # @home.route("/getitem")
@@ -39,7 +39,12 @@ def getItems():
 
 
 #filter throught categories
-
+@home.route("/categories", methods = ['GET'])
+def getCategories():
+    response = requests.get('http://localhost:8080/api/v1/categories')
+    categories = response.json
+    res = render_template('product-nav.html', categories=categories)
+    return res
     
 
 if __name__ == '__main__':

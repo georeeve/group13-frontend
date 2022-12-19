@@ -16,6 +16,24 @@
     <li><a class="dropdown-item" href="#">category.name</a></li>
     % endfor %
 -->
+
+<div class="container_items">
+  {% for categorie in categories %}
+  <!--  -->
+  {% if loop.index >= start and loop.index < end %}
+  <div class="col-6 card_item category-{{item.category.id}} d-flex">
+    <div class="product_image"></div>
+    <p>{{args}}</p>
+    <!-- <img class="product_image"> -->
+    <h3><b>{{category.name}}</b></h3>
+    <p>{{item.description}}</p>
+    <p>£{{item.price}}</p>
+  </div>
+  {% endif %}
+  <!--  -->
+  {% endfor %}
+</div>
+
         <li><a class="dropdown-item" href="#">Produce</a></li>
         <li><a class="dropdown-item" href="#">Meat and Seafood</a></li>
         <li><a class="dropdown-item" href="#">Dairy</a></li>
