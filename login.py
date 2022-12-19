@@ -34,8 +34,7 @@ def signin():
         token = response_header["token"]
         res = redirect(url_for('home.getItems'))
   
-        print(token)
-        
+         
         response = requests.get("http://localhost:8080/api/v1/user", headers={"Authorization": "Bearer " + token})
         res.set_cookie("token", token)
 
@@ -45,5 +44,3 @@ def signin():
         msg = "Incorrect email and/or password, please try again"
         res = make_response(render_template("login.html", msg=msg))
         return res
-
-

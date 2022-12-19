@@ -11,14 +11,18 @@ def registering():
     return render_template("register.html")
 
 
-@register.route("/createuser", methods = ['POST'])
+@register.route("/createuser", methods = ['GET','POST'])
 def create_user():
     response = requests.post('http://localhost:8080/api/v1/user', json={
         "email": request.form["email"],
         "password": request.form["password"],
         "firstName": request.form["firstName"],
         "lastName": request.form["lastName"],
-        "dob": request.form["dob"]
+        "dob": request.form["dob"],
+        "addressLine1": request.form["addressLine1"],
+        "addressLine2": request.form["addressLine2"],
+        "city": request.form["city"],
+        "postCode": request.form["postCode"]
     })
 
     if response.status_code == 400:
@@ -31,14 +35,9 @@ def create_user():
         response_header= response.json()
         print(response_header)
         token = response_header["token"]
-        res = make_response(render_template("userProfile.html"))
+
+        res = redirect(url_for('home.getItems'))
         res.set_cookie("token",token)
-        
-        response = requests.get("http://localhost:8080/api/v1/user", headers={"Authorization": "Bearer " + token})
-        print (response.json())
-        firstName = response.json()['firstName']
-        res = render_template('userProfile.html', firstName=firstName)
-        
-        print(token)
-        return res, token
+     
+        return res
 
