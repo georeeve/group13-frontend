@@ -12,7 +12,7 @@ from logout import logout
 
 from register import register
 
-from checkout import checkout
+from basket import basket
 
 
 #initialising app
@@ -27,7 +27,7 @@ app.register_blueprint(logout, url_prefix="/logout")
 
 app.register_blueprint(register, url_prefix="/register")
 
-app.register_blueprint(checkout, url_prefix="/checkout")
+app.register_blueprint(basket, url_prefix="/basket")
 
 
 #setting port

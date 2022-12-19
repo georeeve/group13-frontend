@@ -4,14 +4,18 @@ import requests
 #request allows us to do profile?name= in browser
 
 #initialise Blueprint
-checkout = Blueprint(__name__, "checkout")
+basket = Blueprint(__name__, "basket")
 
 #creating / route
 
-@checkout.route("/")
-def basket():
- 
+@basket.route("/", methods = ['GET','POST'])
+def basketlanding():
+    return render_template("basket.html")
     
-    #allows for passing of html to Python, can also pass variables INTO the html
-    return render_template("checkout.html")
+
+ 
+
+
+
+
 
