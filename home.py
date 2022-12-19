@@ -35,5 +35,10 @@ def getItems():
 # def get_items(items):
 #     results=[]
 
+
+#filter throught categories
+
+    
+
 if __name__ == '__main__':
     home.run()

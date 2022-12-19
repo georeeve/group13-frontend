@@ -42,5 +42,24 @@
       crossorigin="anonymous"
     ></script>
     <script src="static/index.js"></script>
+
+    
+    <!-- for loop -->
+    <div class="container_items">
+      {% for categorie in categoriess %}
+      <!--  -->
+      {% if loop.index >= start and loop.index < end %}
+      <div class="card_item">
+        <div class="product_image"></div>
+        <p>{{args}}</p>
+        <!-- <img class="product_image"> -->
+        <h3><b>{{item.name}}</b></h3>
+        <p>{{item.description}}</p>
+        <p>£{{item.price}}</p>
+      </div>
+      {% endif %}
+      <!--  -->
+      {% endfor %}
+    </div>
   </body>
 </html>
