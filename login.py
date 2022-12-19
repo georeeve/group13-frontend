@@ -45,7 +45,7 @@ def signin():
             
             print (response.json())
             firstName = response.json()['firstName']
-            adminRes = make_response(render_template('userProfileAdmin.html', firstName=firstName))
+            adminRes = make_response(render_template('index.html', firstName=firstName))
             adminRes.set_cookie("token", token)
             
             return adminRes
@@ -53,7 +53,7 @@ def signin():
         else:
             print (response.json())
             firstName = response.json()['firstName']
-            userRes = make_response(render_template('userProfile.html', firstName=firstName))
+            userRes = make_response(render_template('index.html', firstName=firstName))
             userRes.set_cookie("token",token)
         
             return userRes
