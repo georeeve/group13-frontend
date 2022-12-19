@@ -2,7 +2,7 @@
   --colour-primary: #11365b;
   --colour-highlight: #55e39e;
   --colour-subdued: #abdbc4;
-  --bg-highlight: #f7f7f7;
+  --bg-light: #e6e6e6;
   --font-main: #4b637a;
   --font-light: #c8d0da;
   --white: #ffffff;
@@ -162,23 +162,29 @@ h1 {
 
 /********** CARD **********/
 .container_items {
+  margin: 3% 2% 0%;
   display: flex;
+  justify-content: center;
   gap: 10px;
   flex-wrap: wrap;
 }
 
 .card_item {
-  padding: 2px 16px;
+  background-color: var(--white);
+  /* padding: 10px 15px; */
   width: 250px;
-  border: solid 2px black;
-  border-radius: 5px;
+  border: solid 1px var(--bg-light);
+  border-radius: 10px;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .product_image {
-  background-color: gray;
+  align-self: center;
+  background-color: lightgrey;
   width: 150px;
   height: 150px;
-  border-radius: 5px 5px 5px 5px;
+  border-radius: 5px;
 }
 
 /********** PAGINATION **********/
