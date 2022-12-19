@@ -42,3 +42,24 @@ function handleSmallerSize(e) {
 
 mobileMediaQuery.addEventListener("change", handleSmallerSize);
 handleSmallerSize(mobileMediaQuery);
+
+// [...document.getElementsByClassName("dropdown-categories")].forEach(
+//   (category) => category.addEventListener("click", addCategoryQuery)
+// );
+
+// function addCategoryQuery(event) {
+
+// }
+
+// const cards = [...document.getElementsByClassName("card_item")];
+
+// function filterCategory(event) {
+//   const id = event.target.id;
+//   cards.forEach((card) => {
+//     if (card.classList.contains(`category-${id}`)) {
+//       card.classList.remove("d-none");
+//     } else {
+//       card.classList.add("d-none");
+//     }
+//   });
+// }
