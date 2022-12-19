@@ -66,6 +66,9 @@ ul {
 body {
   background-color: var(--bg-light);
   color: var(--text-dark);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 h1 {
   color: var(--main-dark);
@@ -129,6 +132,12 @@ h1 {
   }
 }
 
+@media (min-width: 1440px) {
+  .header {
+    padding: 1.5% 10%;
+  }
+}
+
 /********** CATEGORIES NAV **********/
 .nav__secondary {
   padding: 2% 3%;
@@ -159,6 +168,11 @@ h1 {
     padding-bottom: 1%;
   }
 }
+@media (min-width: 1440px) {
+  .nav__secondary {
+    padding: 1% 10%;
+  }
+}
 
 /********** CARD **********/
 .container_items {
@@ -173,11 +187,10 @@ h1 {
   border: solid 1px var(--bg-light);
   min-width: 265px;
   width: 100%;
+  max-width: 525px;
   border-radius: 10px;
 }
-.card_item p {
-  margin-bottom: 0;
-}
+
 .product_image {
   margin-left: 1rem;
   align-self: center;
@@ -191,7 +204,29 @@ h1 {
   flex: 1 1;
 }
 
+.card__price {
+  font-weight: 600;
+  font-size: 1.1em;
+  align-self: flex-start;
+}
+.card-body__details {
+  flex-direction: column;
+}
+
 @media (min-width: 520px) {
+  .card__price {
+    margin-bottom: 0;
+  }
+  .card-body__details {
+    flex-direction: row;
+  }
+  .card-body__details .form-control {
+    max-width: 60px;
+    margin-left: auto;
+  }
+}
+
+@media (min-width: 563px) {
   .card_item {
     width: 250px;
     flex-direction: column;
@@ -206,6 +241,12 @@ h1 {
   }
 }
 
+@media (min-width: 1440px) {
+  .container_items {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+}
 /********** PAGINATION **********/
 .nav__pagination {
   margin: 2% 3%;
@@ -229,6 +270,7 @@ h1 {
 .footer {
   background-color: var(--colour-highlight);
   padding: 6% 1%;
+  margin-top: auto;
 }
 
 .footer__text-main {
@@ -245,5 +287,11 @@ h1 {
 @media (min-width: 520px) {
   .footer {
     padding: 3% 0%;
+  }
+}
+
+@media (min-width: 1440px) {
+  .footer {
+    padding: 1% 0%;
   }
 }
