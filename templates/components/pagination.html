@@ -1,0 +1,28 @@
+<nav class="nav d-flex justify-content-center nav__pagination">
+  <ul class="pagination">
+    <li class="page-item disabled" id="pagination-prev">
+      <a
+        class="page-link"
+        href="?start={% if start > 24 %}{{start - 24}}{% else %}{{0}}{% endif %}&end={% if end > 48 %}{{end - 24}}{% else %}{{24}}{% endif %}&length={{items|length}}"
+        >Previous</a
+      >
+    </li>
+    {% for i in range(pages) %}
+    <li class="page-item page-num" id="{{i}}">
+      <a
+        class="page-link"
+        href="?start={{i * 24}}&end={{i * 24 + 24}}&length={{items|length}}"
+        >{{i + 1}}</a
+      >
+    </li>
+    {% endfor%}
+
+    <li class="page-item" id="pagination-next">
+      <a
+        class="page-link"
+        href="?start={% if start + 24 >= items|length %}{{start}}{% else %}{{start + 24}}{% endif %}&end={% if end > items|length %}{{end}}{% else %}{{end + 24}}{% endif %}&length={{items|length}}"
+        >Next</a
+      >
+    </li>
+  </ul>
+</nav>

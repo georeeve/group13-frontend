@@ -1,0 +1,16 @@
+{% for item in items %}
+<!--  -->
+{% if loop.index >= start and loop.index < end %}
+<div class="col-6 card_item category-{{item.category.id}} d-flex">
+  <div class="product_image"></div>
+  <!-- <img class="product_image"> -->
+  <div class="card-body">
+    <h3><b>{{item.name}}</b></h3>
+    <p>{{item.description}}</p>
+    <p>£{{item.price}}</p>
+    <button class="btn btn__main">Add</button>
+  </div>
+</div>
+{% endif %}
+<!--  -->
+{% endfor %}
