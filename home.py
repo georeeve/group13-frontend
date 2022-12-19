@@ -16,7 +16,6 @@ def getItems():
     #print (response.json())
     categoriesRes = requests.get('http://localhost:8080/api/v1/categories')
     categories = categoriesRes.json()
-    print(categories)
     items = response.json()
     pages = math.ceil(len(items)/24)
     args = request.args
@@ -29,6 +28,12 @@ def getItems():
         end = int(args.get('end'))
     if args.get('length') is not None:
         length = int(args.get('length'))
+    
+    if args.get('category') is not None:
+        print(items)
+ 
+        items = list(filter(lambda item: item['category']['id'] == int(args.get('category')), items))
+        print(items)
 
     svg = './static/assets/basket.svg'
     res = render_template('index.html', items=items, pages=pages, start=start, end=end, length=length, svg=svg, categories=categories)
