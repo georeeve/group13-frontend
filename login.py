@@ -32,32 +32,15 @@ def signin():
         response_header= response.json()
         print(response_header)
         token = response_header["token"]
-        res = make_response(render_template("userProfile.html"))
+        res = redirect(url_for('home.getItems'))
   
         print(token)
         
         response = requests.get("http://localhost:8080/api/v1/user", headers={"Authorization": "Bearer " + token})
-        response_name = response.json()
-        
-        
-        if response_name["admin"] == True:
-            
-            
-            print (response.json())
-            firstName = response.json()['firstName']
-            adminRes = make_response(render_template('index.html', firstName=firstName))
-            adminRes.set_cookie("token", token)
-            
-            return adminRes
+        res.set_cookie("token", token)
 
-        else:
-            print (response.json())
-            firstName = response.json()['firstName']
-            userRes = make_response(render_template('index.html', firstName=firstName))
-            userRes.set_cookie("token",token)
+        return res
         
-            return userRes
-
     elif response.status_code == 401:
         msg = "Incorrect email and/or password, please try again"
         res = make_response(render_template("login.html", msg=msg))
