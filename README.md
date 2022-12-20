@@ -7,19 +7,16 @@ pip3 install requests
 
 1.  fix pagination - url
 2.  promt for basket - sign in/register
-3.  basket return to home
 
-- Continue shopping
-- Checkout
-
-3.  modal when signing out
-4.  select delivery slot
+3.  select delivery slot
 
 ##DONE
 
-3. add button - save to basket
-4. html skeleton for admin/user page
-5. css for log in/register
+3.  basket return to home
+4.  modal when signing out
+5.  add button - save to basket
+6.  html skeleton for admin/user page
+7.  css for log in/register
 
 extras:
 _. images for item
