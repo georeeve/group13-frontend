@@ -1,8 +1,5 @@
 <header class="header d-flex justify-content-between align-items-center">
-  <div class="header__logo__container d-flex">
-    <img src="{{ svg }}" alt="green basket logo" class="header__logo" />
-    <h1 class="header__title">Green Basket</h1>
-  </div>
+  {% include 'components/logo-header.html' %}
 
   <ul class="header__links__container d-flex align-items-center">
     <li class="header__links__list position-relative">
@@ -23,6 +20,4 @@
   {% include 'components/header-nosession.html' %}
   <!--  -->
   {% endif %}
-
-  <!-- basket -->
 </header>

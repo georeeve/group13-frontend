@@ -1,0 +1,14 @@
+@import url("style.css");
+@import url("styles/header.css");
+@import url("styles/form.css");
+@import url("styles/footer.css");
+
+.hero__text {
+  margin: 1rem 0 2rem 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+p.form-text {
+  margin-bottom: 0;
+}

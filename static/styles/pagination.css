@@ -1,0 +1,17 @@
+/********** PAGINATION **********/
+.nav__pagination {
+  margin: 2% 3%;
+}
+.page-link {
+  color: var(--font-main);
+  background-color: var(--font-light);
+}
+
+.page-link:hover {
+  color: var(--colour-subdued);
+}
+
+.page-item.active.active > .page-link {
+  background-color: var(--colour-subdued);
+  border-color: var(--colour-subdued);
+}
