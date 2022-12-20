@@ -295,3 +295,7 @@ h1 {
     padding: 1% 0%;
   }
 }
+
+.test {
+  border: solid 1px black
+}
