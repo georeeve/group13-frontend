@@ -86,3 +86,7 @@ h1 {
   color: var(--colour-primary);
   background-color: var(--colour-highlight);
 }
+
+.modal-header {
+  border-radius: calc(0.3rem - 1px);
+}

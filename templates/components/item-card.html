@@ -1,6 +1,4 @@
-{% for item in items %}
-<!--  -->
-{% if loop.index >= start and loop.index < end %}
+{% for item in items %} {% if loop.index >= start and loop.index < end %}
 <div class="card_item category-{{item.category.id}} d-flex">
   <div class="product_image"></div>
   <!-- <img class="product_image"> -->
@@ -28,6 +26,4 @@
     </div>
   </div>
 </div>
-{% endif %}
-<!--  -->
-{% endfor %}
+{% endif %} {% endfor %}

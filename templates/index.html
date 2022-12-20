@@ -13,20 +13,22 @@
     <title>Green Basket</title>
   </head>
   <body>
+    {% include 'components/signout-modal.html' %}
+
     {% include 'components/header.html' %}
-    <!-- products nav -->
+
     {% include 'components/products-nav.html' %}
-    <!-- item card -->
+
     <div class="d-flex justify-content-center">
       <div class="container_items">
-        <!--  -->
+
         {% include 'components/item-card.html' %}
-        <!--  -->
+
       </div>
     </div>
 
     {% include 'components/pagination.html' %}
-    <!-- item card -->
+
     {% include 'components/footer.html' %}
 
     <!-- Separate Popper and Bootstrap JS -->
@@ -41,5 +43,11 @@
       crossorigin="anonymous"
     ></script>
     <script src="static/index.js"></script>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <script type=text/javascript>
+        showModal(true);
+      </script>
+    {% endif %} {% endwith %}
   </body>
 </html>
