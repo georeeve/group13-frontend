@@ -1,0 +1,30 @@
+/********** FOOTER **********/
+
+.footer {
+  background-color: var(--colour-highlight);
+  padding: 6% 1%;
+  margin-top: auto;
+}
+
+.footer__text-main {
+  font-weight: 600;
+}
+
+.footer__text-main,
+.footer__text {
+  color: var(--colour-primary);
+  text-align: center;
+  margin: 0;
+}
+
+@media (min-width: 520px) {
+  .footer {
+    padding: 3% 0%;
+  }
+}
+
+@media (min-width: 1440px) {
+  .footer {
+    padding: 1% 0%;
+  }
+}

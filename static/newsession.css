@@ -1,0 +1,13 @@
+@import url("style.css");
+@import url("styles/form.css");
+/* @import url("styles/header.css");
+@import url("styles/secondary_nav.css");
+@import url("styles/cards.css");
+@import url("styles/pagination.css"); */
+@import url("styles/footer.css");
+
+.hero__text {
+  text-align: center;
+  text-transform: uppercase;
+  /* margin-top: 10%; */
+}

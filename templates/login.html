@@ -5,30 +5,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" >
-    <title>Sign In Page</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='newsession.css') }}" />
+    <title>Green Basket - Log In</title>
 </head>
 <body>
-    <h1>Please Sign In Below</h1>
-    <form action='/login/session' method ='POST'>
-      
-        <div class="container">
+    <main class="container-sm form__container">
+      <h1 class="hero__text">Please Sign In Below</h1>
+        <form action='/login/session' method ='POST'>
           <p class="text-danger">{{msg}}</p>
-          <label for="email"><b>Email</b></label>
-          <input type="text" placeholder="Enter Email" name="email" required>
-      
-          <label for="password"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="password" required>
-      
-          <button type="submit" >Login</button>
-          <label>
-            <input type="checkbox" checked="checked" name="remember"> Remember me
-          </label>
-        </div>
-        <div class="container" style="background-color:#f1f1f1">
-          <button type="button" class="cancelbtn" action={{url_for('home.getItems')}}>Cancel</button>
-          <span class="password"> <a href="{{url_for('register.registering')}}">Sign Up Here</a></span>
-          <span class="password">Forgot <a href="#">Password</a></span>
-        </div>
-      </form>
+          <section class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" />
+            <label for="floatingInput">Email address</label>
+          </section>
+          <section class="form-floating mb-3">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <label for="floatingPassword">Password</label>
+          </section>
+          <section class="mb-3">
+            <button type="submit" class="btn btn__main">Sign in</button>
+            <!-- <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="gridCheck1">
+              <label class="form-check-label" for="gridCheck1">Remember me</label>
+            </div> -->
+            <button type="button" class="btn btn__main"  action={{url_for('home.getItems')}}>Cancel</button>
+          </section>
+          <section class="form__links row">
+            <p class="password"> <a href="{{url_for('register.registering')}}">Sign Up Here</a></p>
+            <p class="password">Forgot <a href="#">Password</a></p>
+          </section>
+        </form>
+    </main>
+
+      {% include 'components/footer.html' %}
+          <!-- Separate Popper and Bootstrap JS -->
+    <script
+    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+    crossorigin="anonymous"
+  ></script>
 </body>
 </html>
