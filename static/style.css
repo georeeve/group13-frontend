@@ -87,10 +87,15 @@ h1 {
   background-color: var(--colour-highlight);
 }
 
+.btn a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
 .modal-header {
   border-radius: calc(0.3rem - 1px);
 }
 
 .test {
-  border: solid 1px black
+  border: solid 1px black;
 }
