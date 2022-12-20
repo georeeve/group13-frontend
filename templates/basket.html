@@ -22,27 +22,7 @@
     <div class="container basket__body">
       <div class="row">
         <main class="col-md-8">
-          <div class="container test">
-            <div class="row">
-              <div class="col-9">Item Checkout</div>
-              <div class="col">Total</div>
-            </div>
-            <div class="d-flex flex-row bd-highlight mb-3">
-              <div class="p-2 bd-highlight">Item Name</div>
-
-              <div class="p-2 bd-highlight">Quantity</div>
-              <div class="form-floating">
-                <select class="form-select" id="Quantity">
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <button type="button" class="btn btn__main">
-            <a href="{{url_for('home.getItems')}}">Continue Shopping</a>
-          </button>
+          {% include 'components/basket-items.html'%}
         </main>
         <aside class="col-md-4">
           {% include 'components/basket-total.html'%}
