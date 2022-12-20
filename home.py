@@ -40,9 +40,7 @@ def getItems():
         items = list(filter(lambda item: item['category']['id'] == int(args.get('category')), items))
         print(items)
 
-    svg = './static/assets/basket.svg'
-
-    res = render_template('index.html', items=items, pages=pages, start=start, end=end, length=length, svg=svg, categories=categories)
+    res = render_template('index.html', items=items, pages=pages, start=start, end=end, length=length, categories=categories)
     return res
 
 

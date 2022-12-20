@@ -9,34 +9,42 @@
     <title>Green Basket - Log In</title>
 </head>
 <body>
+  <header class="header d-flex justify-content-center align-items-center">
+    {% include 'components/logo-header.html' %}
+  </header>
     <main class="container-sm form__container">
       <h1 class="hero__text">Please Sign In Below</h1>
         <form action='/login/session' method ='POST'>
           <p class="text-danger">{{msg}}</p>
           <section class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" />
-            <label for="floatingInput">Email address</label>
+            <input 
+            type="email"
+            name="email"
+            class="form-control"
+            id="email"
+            placeholder="name@example.com" />
+            <label for="email">Email address</label>
           </section>
           <section class="form-floating mb-3">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-            <label for="floatingPassword">Password</label>
+            <input 
+              type="password"
+              name="password"
+              class="form-control"
+              id="password"
+              placeholder="Password" />
+            <label for="password">Password</label>
+            <p class="form-text">Forgot <a href="#">Password</a></p>
           </section>
           <section class="mb-3">
             <button type="submit" class="btn btn__main">Sign in</button>
-            <!-- <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="gridCheck1">
-              <label class="form-check-label" for="gridCheck1">Remember me</label>
-            </div> -->
             <button type="button" class="btn btn__main"  action={{url_for('home.getItems')}}>Cancel</button>
           </section>
           <section class="form__links row">
-            <p class="password"> <a href="{{url_for('register.registering')}}">Sign Up Here</a></p>
-            <p class="password">Forgot <a href="#">Password</a></p>
+            <p class="form-text"> <a href="{{url_for('register.registering')}}">Sign Up Here</a></p>
           </section>
         </form>
     </main>
-
-      {% include 'components/footer.html' %}
+    {% include 'components/footer.html' %}
           <!-- Separate Popper and Bootstrap JS -->
     <script
     src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
