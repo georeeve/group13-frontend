@@ -36,7 +36,7 @@ def userProfile():
             return userRes
 
         elif request.method == 'PATCH':
-            update = requests.post('http://localhost:8080/api/v1/user', json={
+            update = requests.patch('http://localhost:8080/api/v1/user', json={
             "email": request.form["email"],
             "password": request.form["password"],
             "firstName": request.form["firstName"],
@@ -47,6 +47,8 @@ def userProfile():
             "city": request.form["city"],
             "postCode": request.form["postCode"]
             })
+            
+            userUpdate = update.json()
 
             return update
         
