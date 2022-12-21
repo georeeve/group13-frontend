@@ -59,5 +59,9 @@ def add_item():
     return res
 
 
+@home.route("/checkout")
+def checkout():
+    return render_template("checkout.html")
+
 if __name__ == '__main__':
     home.run()
