@@ -29,19 +29,20 @@ function getCookie(name) {
 }
 
 function updateBasketPill() {
-  console.log(atob(getCookie("basket")));
-  const basket = JSON.parse(atob(getCookie("basket")));
+  if (getCookie("basket")) {
+    const basket = JSON.parse(atob(getCookie("basket")));
 
-  const currentItems = Object.values(basket).reduce(
-    (prev, curr) => prev + curr
-  );
+    const currentItems = Object.values(basket).reduce(
+      (prev, curr) => prev + curr
+    );
 
-  const basketPill = document.getElementById("basket-quantity");
+    const basketPill = document.getElementById("basket-quantity");
 
-  if (basketPill.textContent === "0") {
-    basketPill.classList.add("d-none");
-  } else {
-    basketPill.classList.remove("d-none");
-    basketPill.textContent = currentItems;
+    if (basketPill.textContent === "0") {
+      basketPill.classList.add("d-none");
+    } else {
+      basketPill.classList.remove("d-none");
+      basketPill.textContent = currentItems;
+    }
   }
 }
