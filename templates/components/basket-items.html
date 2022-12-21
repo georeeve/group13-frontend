@@ -7,7 +7,7 @@
     <div class="col-9">
       <div class="row">
         <div class="col-md-8">{{item.name}}</div>
-        <div class="col-md-4">£{{item.price}}</div>
+        <div class="col-md-4">£{{item.price * item.selected_quantity}}</div>
       </div>
       <div class="row">
         <div class="col">{{item.description}}</div>
@@ -19,7 +19,9 @@
             <button class="badge rounded-pill" aria-label="update item">Update</button>
           </form>
         </div>
-        <button class="col-md-4">delete</button>
+        <form id="item-{{ item.id }}" class="delete-item">
+            <button class="col-md-4">delete</button>
+        </form>
       </div>
     </div>
   </div>
