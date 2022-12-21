@@ -6,10 +6,18 @@
   margin-top: 1rem;
 }
 .product_image {
-  margin-left: 1rem;
+  margin: 0 auto;
   align-self: center;
   background-color: lightgrey;
   width: 80px;
   height: 80px;
   border-radius: 5px;
+}
+
+.total__title {
+  border-bottom-style: dotted;
+}
+
+.total__delivery {
+  border-bottom-style: solid;
 }
