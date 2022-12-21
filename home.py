@@ -51,7 +51,7 @@ def add_item():
     basket_cookie = request.cookies.get("basket")
     basket = json.loads(base64.b64decode(basket_cookie.encode('ascii')).decode('ascii')) if basket_cookie is not None else {}
     item_id = data['itemId']
-    current_quantity = basket[item_id]['quantity'] if basket.get("item_id") is not None else 0
+    current_quantity = basket[item_id] if basket.get(item_id) is not None else 0
     to_add_quantity = int(data['quantity'])
     basket[item_id] = current_quantity + to_add_quantity
     res = make_response()
