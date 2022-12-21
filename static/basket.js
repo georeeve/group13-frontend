@@ -17,6 +17,7 @@ async function updateBasket(form, e) {
         body: JSON.stringify({ itemId, quantity }),
         headers: { "Content-Type": "application/json" },
     });
+    location.reload();
 }
 
 async function deleteItem(form, e) {
