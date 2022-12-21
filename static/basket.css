@@ -29,10 +29,34 @@
   max-width: 50px;
 }
 
+.total__title,
+.total__subtotal,
+.total__sub-price,
+.total__delivery,
+.total__price {
+  margin: 0;
+  padding: 0;
+}
+.total__card {
+  margin-top: 1rem;
+  padding: 1.5rem;
+}
 .total__title {
-  border-bottom-style: dotted;
+  padding: 0;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  text-transform: uppercase;
 }
 
-.total__delivery {
-  border-bottom-style: solid;
+.btn__checkout {
+  margin-top: 1rem;
+}
+.total__sub-price {
+  text-align: right;
+}
+
+@media (min-width: 520px) {
+  .total__card {
+    margin-top: 0;
+  }
 }
