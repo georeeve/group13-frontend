@@ -1,0 +1,22 @@
+/********** CATEGORIES NAV **********/
+.nav__secondary {
+  padding: 2% 3%;
+  justify-content: center;
+  background-color: var(--font-light);
+}
+
+.dropdown-item:active {
+  background-color: var(--colour-primary);
+}
+@media (min-width: 520px) {
+  .nav__secondary {
+    justify-content: left;
+    padding-top: 1%;
+    padding-bottom: 1%;
+  }
+}
+@media (min-width: 1440px) {
+  .nav__secondary {
+    padding: 1% 10%;
+  }
+}
