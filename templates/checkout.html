@@ -9,25 +9,48 @@
     <title>Checkout</title>
     <h2>Checkout</h2>
 </head>
-<body>
+<main>
 <div class="container-sm test" style="width: 18rem">
 <div class="total__body">
 <h5 class="total__title">Dummy Data</h5>
-<div class="row">
-<div class="col">
+
 <div class="dummy__item">Item name</div>
 <div class="dummy__delivery">Description</div>
 <div class="dummy__price">Price</div>
 </div>
-<div class="total__item">Delivery Date</div>
-<div class="total__delivery">Delivery Time</div>
+</main>
+
+<aside>
+<div class="container-sm test" style="width: 18rem;">
+<label for="start">Delivery date:</label>
+<input type="date" id="delivery__date" name="delivery__date"
+       value="2022-12-21"
+       min="2022-12-21" max="2023-1-31">
+<label for="delivery time">Delivery Time:</label>
+<select name="delivery time" id="delivery__time">
+  <option value="7:00AM-7:30AM">7:00AM-7:30AM</option>
+  <option value="7:30AM-8:00AM">7:30AM-8:00AM</option>
+  <option value="8:00AM-8:30AM">8:00AM-8:30AM</option>
+  <option value="8:30AM-9:00AM">8:30AM-9:00AM</option>
+  <option value="9:00AM-9:30AM">9:00AM-9:30AM</option>
+  <option value="9:30AM-10:00AM">9:30AM-10:00AM</option>
+  <option value="10:00AM-10:30AM">10:00AM-10:30AM</option>
+  <option value="10:30AM-11:00AM">10:30AM-11:00AM</option>
+  <option value="11:00AM-11:30AM">1:00AM-11:30AM</option>
+  <option value="11:30AM-12:00AM">11:30AM-12:00AM</option>
+  <option value="12:00AM-12:30AM">12:00AM-12:30AM</option>
+  <option value="12:30AM-1:00PM">12:30AM-1:00PM</option>
+</select>
 
 <button type="button" class="btn btn__main">
 <a href="{{url_for('home.getItems')}}">Return</a></button>
+
 <button type="button" class="btn btn__main">
 <a href="{{url_for('home.getItems')}}">Checkout</a></button>
 </div>
 </div>
-</body>
+</div>
+</aside>
+
 </html>
 
