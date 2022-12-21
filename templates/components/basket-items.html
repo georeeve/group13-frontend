@@ -1,24 +1,40 @@
 {% for item in items %}
-<div class="container test">
+<div class="container p-2 basket__product_card">
   <div class="row">
-    <div class="col-3">
-      <div class="product_image"></div>
+    <div class="col-sm-4 d-flex">
+      <div class="basket__product_image"></div>
     </div>
-    <div class="col-9">
+    <div class="col-sm-8">
       <div class="row">
-        <div class="col-md-8">{{item.name}}</div>
-        <div class="col-md-4">£{{item.price}}</div>
+        <div class="col-8 basket__product_title">{{item.name}}</div>
+        <div class="col-4">
+          £{{ "%.2f"|format(item.price * item.selected_quantity) }}
+        </div>
       </div>
-      <div class="row">
+      <div class="row mb-1">
         <div class="col">{{item.description}}</div>
       </div>
-      <div class="row">
-        <div class="col-md-8">
-          <button class="badge rounded-pill" aria-label="remove item">-</button>
-          <input type="number" name="quatity" id="quatity" min="0" value="1" />
-          <button class="badge rounded-pill" aria-label="add item">+</button>
+      <div class="row align-items-center">
+        <div class="col-8">
+          <form id="item-{{ item.id }}" class="update-item">
+            <input
+              type="number"
+              name="quantity"
+              class="basket__product_quantity"
+              id="quantity"
+              min="0"
+              value="{{ item.selected_quantity }}"
+            />
+            <button class="btn__main btn__round" aria-label="update item">
+              Update
+            </button>
+          </form>
         </div>
-        <button class="col-md-4">delete</button>
+        <div class="col-4 ps-0">
+          <form id="item-{{ item.id }}" class="delete-item">
+            <button class="btn btn__secondary">Delete</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
