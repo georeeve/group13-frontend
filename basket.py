@@ -13,17 +13,18 @@ basket = Blueprint(__name__, "basket")
 @basket.route("/", methods = ['GET','POST'])
 def basketlanding():
     basket_cookie = request.cookies.get("basket")
-    basket = json.loads(base64.b64decode(basket_cookie.encode('ascii')).decode('ascii')) if basket_cookie is not None else {}
+    user_basket = json.loads(base64.b64decode(basket_cookie.encode('ascii')).decode('ascii')) if basket_cookie is not None else {}
 
     items = []
-
-    for item, quantity in basket.items():
+    total_price = 0
+    for item, quantity in user_basket.items():
         response = requests.get('http://localhost:8080/api/v1/items/' + item)
         data_item = response.json()
         data_item['selected_quantity'] = quantity
         items.append(data_item)
+        total_price += data_item['price'] * quantity
 
-    return render_template("basket.html", items=items)
+    return render_template("basket.html", items=items, total_price=total_price)
 
 
 @basket.route("/update", methods=['POST'])
