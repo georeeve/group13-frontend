@@ -15,11 +15,11 @@ pip3 install requests
 
 7 Fix links -- WIKI
 _. password to fake email has been sent page - return to home link
-_. checkout button - fake checkout page with delivery slots
+_. checkout button - fake checkout page with delivery slots 
 _. logo link to homepage
-_. register cancel button
-_. foot github link - front end and back end link
-_. checkout - fake checkout page
+_. register cancel button 
+_. foot github link - front end and back end link 
+_. checkout - fake checkout page 
 
 ##DONE
 

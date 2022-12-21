@@ -16,6 +16,8 @@ from basket import basket
 
 from userProfile import userprofile
 
+# from login import resetpassword
+
 
 #initialising app
 app = Flask(__name__)
@@ -33,6 +35,7 @@ app.register_blueprint(register, url_prefix="/register")
 app.register_blueprint(basket, url_prefix="/basket")
 
 app.register_blueprint(userprofile, url_prefix="/userprofile")
+
 
 
 #setting port
