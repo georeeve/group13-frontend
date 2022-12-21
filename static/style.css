@@ -79,12 +79,24 @@ h1 {
   background-color: var(--colour-primary);
   border: 2px solid var(--colour-primary);
 }
+.btn__secondary {
+  color: var(--colour-primary);
+  background-color: var(--colour-highlight);
+  border: 2px solid var(--colour-highlight);
+}
 
 .btn__main:hover,
 .btn__main:focus {
-  border: 2px solid var(--colour-primary);
   color: var(--colour-primary);
   background-color: var(--colour-highlight);
+  border: 2px solid var(--colour-primary);
+}
+
+.btn__secondary:hover,
+.btn__secondary:focus {
+  color: var(--colour-highlight);
+  background-color: var(--colour-primary);
+  border: 2px solid var(--colour-primary);
 }
 
 .btn a {

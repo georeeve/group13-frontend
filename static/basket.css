@@ -5,13 +5,27 @@
 .basket__body {
   margin-top: 1rem;
 }
-.product_image {
+
+.basket__product_card {
+  margin-bottom: 1rem;
+  background-color: var(--white);
+  border-radius: 10px;
+}
+.basket__product_image {
   margin: 0 auto;
   align-self: center;
   background-color: lightgrey;
   width: 80px;
   height: 80px;
   border-radius: 5px;
+}
+
+.basket__product_title {
+  font-weight: 600;
+}
+
+.basket__product_quantity {
+  max-width: 50px;
 }
 
 .total__title {

@@ -1,26 +1,33 @@
 {% for item in items %}
-<div class="container test">
+<div class="container p-2 basket__product_card">
   <div class="row">
-    <div class="col-3">
-      <div class="product_image"></div>
+    <div class="col-3 d-flex">
+      <div class="basket__product_image"></div>
     </div>
     <div class="col-9">
       <div class="row">
-        <div class="col-md-8">{{item.name}}</div>
+        <div class="col-md-8 basket__product_title">{{item.name}}</div>
         <div class="col-md-4">£{{item.price * item.selected_quantity}}</div>
       </div>
-      <div class="row">
+      <div class="row mb-1">
         <div class="col">{{item.description}}</div>
       </div>
       <div class="row">
         <div class="col-md-8">
           <form id="item-{{ item.id }}" class="update-item">
-            <input type="number" name="quantity" id="quantity" min="0" value="{{ item.selected_quantity }}" />
-            <button class="badge rounded-pill" aria-label="update item">Update</button>
+            <input
+              type="number"
+              name="quantity"
+              class="basket__product_quantity"
+              id="quantity"
+              min="0"
+              value="{{ item.selected_quantity }}"
+            />
+            <button class="btn__main" aria-label="update item">Update</button>
           </form>
         </div>
         <form id="item-{{ item.id }}" class="delete-item">
-            <button class="col-md-4">delete</button>
+          <button class="col-md-4 btn btn__secondary">delete</button>
         </form>
       </div>
     </div>
