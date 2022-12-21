@@ -6,7 +6,7 @@ pip3 install requests
 ##TODO
 
 1.  fix pagination - url
-2.  promt for basket - sign in/register
+2.  promt for basket - sign in/register - //redirect working, flash being temperamental//
 
 3.  select delivery slot
 
