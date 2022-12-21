@@ -30,14 +30,14 @@ def create_user():
         msg = response_body["message"]
         res = make_response(render_template("register.html", msg=msg))
         return res, msg
-    
+
     else:
         response_header= response.json()
         print(response_header)
         token = response_header["token"]
 
         res = redirect(url_for('home.getItems'))
-        res.set_cookie("token",token)
-     
+        res.set_cookie("token", token, httponly=True, samesite="Strict")
+
         return res
 

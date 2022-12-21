@@ -1,0 +1,29 @@
+{% for item in items %}
+<div class="container test">
+  <div class="row">
+    <div class="col-3">
+      <div class="product_image"></div>
+    </div>
+    <div class="col-9">
+      <div class="row">
+        <div class="col-md-8">{{item.name}}</div>
+        <div class="col-md-4">£{{item.price}}</div>
+      </div>
+      <div class="row">
+        <div class="col">{{item.description}}</div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <button class="badge rounded-pill" aria-label="remove item">-</button>
+          <input type="number" name="quatity" id="quatity" min="0" value="1" />
+          <button class="badge rounded-pill" aria-label="add item">+</button>
+        </div>
+        <button class="col-md-4">delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+<button type="button" class="btn btn__main">
+  <a href="{{url_for('home.getItems')}}">Continue Shopping</a>
+</button>

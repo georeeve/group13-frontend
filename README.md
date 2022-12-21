@@ -5,7 +5,21 @@ pip3 install requests
 
 ##TODO
 
-1. Wicky: Basket route
-2. Ana: CSS
-3. George: Basket backend
-4. Tyler: Profile redirect
+1.  fix pagination - url
+2.  promt for basket - sign in/register
+
+3.  select delivery slot
+
+##DONE
+
+3.  basket return to home
+4.  modal when signing out
+5.  add button - save to basket
+6.  html skeleton for admin/user page
+7.  css for log in/register
+
+extras:
+_. images for item
+_. address lookup
+_. basket db
+_. session id linked to session id

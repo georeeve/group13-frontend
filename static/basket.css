@@ -1,0 +1,23 @@
+@import url("style.css");
+@import url("styles/header.css");
+@import url("styles/footer.css");
+
+.basket__body {
+  margin-top: 1rem;
+}
+.product_image {
+  margin: 0 auto;
+  align-self: center;
+  background-color: lightgrey;
+  width: 80px;
+  height: 80px;
+  border-radius: 5px;
+}
+
+.total__title {
+  border-bottom-style: dotted;
+}
+
+.total__delivery {
+  border-bottom-style: solid;
+}

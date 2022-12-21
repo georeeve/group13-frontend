@@ -1,0 +1,8 @@
+.form__container {
+  margin-top: 10%;
+  margin-bottom: 10%;
+  padding: 1.5rem;
+  background-color: var(--white);
+  border: solid --white 1px;
+  border-radius: 10px;
+}
