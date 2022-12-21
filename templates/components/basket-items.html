@@ -14,9 +14,10 @@
       </div>
       <div class="row">
         <div class="col-md-8">
-          <button class="badge rounded-pill" aria-label="remove item">-</button>
-          <input type="number" name="quatity" id="quatity" min="0" value="1" />
-          <button class="badge rounded-pill" aria-label="add item">+</button>
+          <form id="item-{{ item.id }}" class="update-item">
+            <input type="number" name="quantity" id="quantity" min="0" value="{{ item.selected_quantity }}" />
+            <button class="badge rounded-pill" aria-label="update item">Update</button>
+          </form>
         </div>
         <button class="col-md-4">delete</button>
       </div>
