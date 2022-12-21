@@ -1,5 +1,5 @@
 #Setting up routes
-from flask import Blueprint, render_template, request, jsonify, redirect, url_for, make_response 
+from flask import Blueprint, render_template, request, jsonify, redirect, url_for, make_response
 import requests
 import json
 import base64
@@ -14,19 +14,44 @@ basket = Blueprint(__name__, "basket")
 def basketlanding():
     basket_cookie = request.cookies.get("basket")
     basket = json.loads(base64.b64decode(basket_cookie.encode('ascii')).decode('ascii')) if basket_cookie is not None else {}
-    
+
     items = []
 
     for item, quantity in basket.items():
         response = requests.get('http://localhost:8080/api/v1/items/' + item)
-        items.append(response.json())
+        data_item = response.json()
+        data_item['selected_quantity'] = quantity
+        items.append(data_item)
 
     return render_template("basket.html", items=items)
-    
-
- 
 
 
+@basket.route("/update", methods=['POST'])
+def add_item():
+    data = request.get_json()
+    user_basket = get_basket(request)
+    item_id = data['itemId']
+    new_quantity = int(data['quantity'])
+    user_basket[item_id] = new_quantity
+    res = make_response()
+    return set_basket(res, user_basket)
 
 
+@basket.route("/delete", methods=['POST'])
+def delete_item():
+    data = request.get_json()
+    user_basket = get_basket(request)
+    item_id = data['itemId']
+    del user_basket[item_id]
+    res = make_response()
+    return set_basket(res, user_basket)
 
+
+def get_basket(req):
+    basket_cookie = req.cookies.get("basket")
+    return json.loads(base64.b64decode(basket_cookie.encode('ascii')).decode('ascii')) if basket_cookie is not None else {}
+
+
+def set_basket(res, user_basket):
+    res.set_cookie("basket", base64.b64encode(json.dumps(user_basket).encode('ascii')).decode('ascii'), samesite="Strict")
+    return res
