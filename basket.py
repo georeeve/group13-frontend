@@ -16,7 +16,7 @@ def basketlanding():
     user_basket = json.loads(base64.b64decode(basket_cookie.encode('ascii')).decode('ascii')) if basket_cookie is not None else {}
 
     items = []
-    total_price = 0
+    total_price = 0.0
     for item, quantity in user_basket.items():
         response = requests.get('http://localhost:8080/api/v1/items/' + item)
         data_item = response.json()
