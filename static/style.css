@@ -74,6 +74,9 @@ h1 {
   color: var(--main-dark);
 }
 
+.btn__round {
+  border-radius: 5px;
+}
 .btn__main {
   color: var(--colour-highlight);
   background-color: var(--colour-primary);
