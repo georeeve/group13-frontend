@@ -7,6 +7,14 @@
   flex-direction: column;
 }
 
+.header__a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.header__a:hover {
+  color: inherit;
+}
 .header__logo {
   width: 30px;
 }
