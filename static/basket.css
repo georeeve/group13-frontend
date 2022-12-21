@@ -5,3 +5,11 @@
 .basket__body {
   margin-top: 1rem;
 }
+.product_image {
+  margin-left: 1rem;
+  align-self: center;
+  background-color: lightgrey;
+  width: 80px;
+  height: 80px;
+  border-radius: 5px;
+}

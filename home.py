@@ -55,7 +55,8 @@ def add_item():
     to_add_quantity = int(data['quantity'])
     basket[item_id] = current_quantity + to_add_quantity
     res = make_response()
-    res.set_cookie("basket", base64.b64encode(json.dumps(basket).encode('ascii')).decode('ascii'), httponly=True, samesite="Strict")
+    res.set_cookie("basket", base64.b64encode(json.dumps(basket).encode('ascii')).decode('ascii'), samesite="Strict")
+
     return res
 
 
