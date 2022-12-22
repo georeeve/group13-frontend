@@ -3,6 +3,9 @@ from flask import Blueprint, render_template, request, flash, jsonify, redirect,
 import requests
 import json
 import base64
+
+from basket_utils import get_basket_data_items, get_basket, set_basket
+
 #request allows us to do profile?name= in browser
 
 #initialise Blueprint
@@ -13,18 +16,9 @@ basket = Blueprint(__name__, "basket")
 #routing to main basket page
 @basket.route("/", methods = ['GET','POST'])
 def basketlanding():
-    basket_cookie = request.cookies.get("basket")
-    user_basket = json.loads(base64.b64decode(basket_cookie.encode('ascii')).decode('ascii')) if basket_cookie is not None else {}
+    user_basket = get_basket(request)
 
-    items = []
-    total_price = 0.0
-    for item, quantity in user_basket.items():
-        response = requests.get('http://localhost:8080/api/v1/items/' + item)
-        data_item = response.json()
-        data_item['selected_quantity'] = quantity
-        items.append(data_item)
-        total_price += data_item['price'] * quantity
-
+    items, total_price = get_basket_data_items(user_basket)
     return render_template("basket.html", items=items, total_price=total_price)
 
 #adds items to the basket, also prompts user to sign in if they add an item without being signed in
@@ -36,15 +30,7 @@ def add_item():
     new_quantity = int(data['quantity'])
     user_basket[item_id] = new_quantity
     res = make_response()
-
-    signIn = request.cookies.get('token')
-    
-    if signIn == None:
-        flash("Please sign in first", "info")
-        res = redirect(url_for('login.signInLanding'))
-        return res
-    else:
-        return set_basket(res, user_basket)
+    return set_basket(res, user_basket)
 
 #deleting items from the basket
 @basket.route("/delete", methods=['POST'])
@@ -55,15 +41,3 @@ def delete_item():
     del user_basket[item_id]
     res = make_response()
     return set_basket(res, user_basket)
-
-#gets the basket and returns as json
-def get_basket(req):
-    basket_cookie = req.cookies.get("basket")
-    return json.loads(base64.b64decode(basket_cookie.encode('ascii')).decode('ascii')) if basket_cookie is not None else {}
-
-#sets the basket cookie
-def set_basket(res, user_basket):
-    res.set_cookie("basket", base64.b64encode(json.dumps(user_basket).encode('ascii')).decode('ascii'), samesite="Strict")
-    return res
-
-
