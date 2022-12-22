@@ -17,45 +17,63 @@
   <div class="container mt-3">
     <div class="row g-3">
       <main class="col-md-6">
-        <div class="container-sm section">
-          <div class="total__body">
-            <h5 class="total__title">Order Summary</h5>
-
-            {% for item in items %}
-            <div class="d-flex">
-              <p>{{ item.name }} x {{ item.selected_quantity }}</p>
-              <p class="ms-auto">£{{ "%.2f"|format(item.price * item.selected_quantity) }}</p>
-            </div>
-            {% endfor %}
+        <div class="container-sm section p-4">
+          <h4 class="total__title mb-2 pb-2 border-bottom">Order Summary</h4>
+          {% for item in items %}
+          <div class="d-flex">
+            <p>{{ item.name }} x {{ item.selected_quantity }}</p>
+            <p class="ms-auto">£{{ "%.2f"|format(item.price * item.selected_quantity) }}</p>
+          </div>
+          {% endfor %}
+          <div class="d-flex pt-3 border-top border-dark">
+            <h5>Sub-Total</h5>
+            <p class="ms-auto">£{{total}}</p>
           </div>
         </div>
       </main>
       <aside class="col-md-6">
-        <div class="container-sm section">
-          <label for="start">Delivery date:</label>
-          <input type="date" id="delivery__date" name="delivery__date" value="2022-12-21" min="2022-12-21"
-            max="2023-1-31">
-          <label for="delivery time">Delivery Time:</label>
-          <select name="delivery time" id="delivery__time">
-            <option value="7:00AM-7:30AM">7:00AM-7:30AM</option>
-            <option value="7:30AM-8:00AM">7:30AM-8:00AM</option>
-            <option value="8:00AM-8:30AM">8:00AM-8:30AM</option>
-            <option value="8:30AM-9:00AM">8:30AM-9:00AM</option>
-            <option value="9:00AM-9:30AM">9:00AM-9:30AM</option>
-            <option value="9:30AM-10:00AM">9:30AM-10:00AM</option>
-            <option value="10:00AM-10:30AM">10:00AM-10:30AM</option>
-            <option value="10:30AM-11:00AM">10:30AM-11:00AM</option>
-            <option value="11:00AM-11:30AM">1:00AM-11:30AM</option>
-            <option value="11:30AM-12:00AM">11:30AM-12:00AM</option>
-            <option value="12:00AM-12:30AM">12:00AM-12:30AM</option>
-            <option value="12:30AM-1:00PM">12:30AM-1:00PM</option>
-          </select>
-
-          <form action="/checkout" method="POST">
-            <button class="btn btn__main" type="submit">Checkout</button>
-          </form>
-
-          <a class="btn btn__main" href="{{url_for('basket.basketlanding')}}">Return to Basket</a>
+        <div class="container-sm section p-4">
+          <div class="row mb-3">
+            <label class="form-label col-5" for="start">Delivery date:</label>
+            <div class="col-7">
+              <input class="form-control" type="date" id="delivery__date" name="delivery__date" value="2022-12-21"
+                min="2022-12-21" max="2023-1-31">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="form-label col-5" for="delivery time">Delivery Time:</label>
+            <div class="col-7">
+              <select class="form-select" name="delivery time" id="delivery__time">
+                <option value="7:00AM-7:30AM">7:00AM-7:30AM</option>
+                <option value="7:30AM-8:00AM">7:30AM-8:00AM</option>
+                <option value="8:00AM-8:30AM">8:00AM-8:30AM</option>
+                <option value="8:30AM-9:00AM">8:30AM-9:00AM</option>
+                <option value="9:00AM-9:30AM">9:00AM-9:30AM</option>
+                <option value="9:30AM-10:00AM">9:30AM-10:00AM</option>
+                <option value="10:00AM-10:30AM">10:00AM-10:30AM</option>
+                <option value="10:30AM-11:00AM">10:30AM-11:00AM</option>
+                <option value="11:00AM-11:30AM">1:00AM-11:30AM</option>
+                <option value="11:30AM-12:00AM">11:30AM-12:00AM</option>
+                <option value="12:00AM-12:30AM">12:00AM-12:30AM</option>
+                <option value="12:30AM-1:00PM">12:30AM-1:00PM</option>
+              </select>
+            </div>
+          </div>
+          <div class="d-flex mb-3">
+            <p>Delivery Price</p>
+            {% set delivery_price = 5 %}
+            <p class="ms-auto">£{{ "%.2f"|format(delivery_price) }}</p>
+          </div>
+          <div class="d-flex pt-3 border-top border-dark">
+            <h5>Total</h5>
+            <p class="ms-auto">£{{total + delivery_price}}</p>
+          </div>
+          <div class="d-flex justify-content-evenly">
+            <form action="/checkout" method="POST">
+              <button class="btn btn__main" type="submit">Checkout</button>
+            </form>
+            <a class="btn btn__main" href="{{url_for('basket.basketlanding')}}">Return to Basket</a>
+          </div>
         </div>
       </aside>
     </div>
