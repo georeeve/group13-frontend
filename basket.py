@@ -1,5 +1,5 @@
 #Setting up routes
-from flask import Blueprint, render_template, request, jsonify, redirect, url_for, make_response
+from flask import Blueprint, render_template, request, flash, jsonify, redirect, url_for, make_response
 import requests
 import json
 import base64
@@ -35,8 +35,15 @@ def add_item():
     new_quantity = int(data['quantity'])
     user_basket[item_id] = new_quantity
     res = make_response()
-    return set_basket(res, user_basket)
 
+    signIn = request.cookies.get('token')
+    
+    if signIn == None:
+        flash("Please sign in first", "info")
+        res = redirect(url_for('login.signInLanding'))
+        return res
+    else:
+        return set_basket(res, user_basket)
 
 @basket.route("/delete", methods=['POST'])
 def delete_item():

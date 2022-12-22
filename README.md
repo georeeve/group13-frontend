@@ -5,15 +5,14 @@ pip3 install requests
 
 ##TODO
 
-1. fix pagination - url
-2. promt for basket - sign in/register -- TYLER
+1.  fix pagination - url
+2.  promt for basket - sign in/register - //redirect working, flash being temperamental//
 3. select delivery slot
 4. -/+/delete button funtionality -- GEORGE
    _. update tolal price per item
    _. checkout - uptade total
 5. styling -- ANA
-
-7 Fix links -- WIKI
+6. Fix links -- WIKI
 _. password to fake email has been sent page - return to home link
 _. checkout button - fake checkout page with delivery slots 
 _. logo link to homepage
