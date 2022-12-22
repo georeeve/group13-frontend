@@ -8,8 +8,9 @@ import base64
 #initialise Blueprint
 basket = Blueprint(__name__, "basket")
 
-#creating / route
+#creating / routes
 
+#routing to main basket page
 @basket.route("/", methods = ['GET','POST'])
 def basketlanding():
     basket_cookie = request.cookies.get("basket")
@@ -26,21 +27,14 @@ def basketlanding():
 
     return render_template("basket.html", items=items, total_price=total_price)
 
-
+#adds items to the basket, also prompts user to sign in if they add an item without being signed in
 @basket.route("/update", methods=['POST'])
 def add_item():
     data = request.get_json()
     user_basket = get_basket(request)
-
     item_id = data['itemId']
-
-    res = requests.get("http://localhost:8080/api/v1/items/" + item_id)
-    item = res.json()
-
     new_quantity = int(data['quantity'])
-    total_quantity = max(min(new_quantity, item['quantity']), 1)
-    user_basket[item_id] = total_quantity
-
+    user_basket[item_id] = new_quantity
     res = make_response()
 
     signIn = request.cookies.get('token')
@@ -52,6 +46,7 @@ def add_item():
     else:
         return set_basket(res, user_basket)
 
+#deleting items from the basket
 @basket.route("/delete", methods=['POST'])
 def delete_item():
     data = request.get_json()
@@ -61,12 +56,14 @@ def delete_item():
     res = make_response()
     return set_basket(res, user_basket)
 
-
+#gets the basket and returns as json
 def get_basket(req):
     basket_cookie = req.cookies.get("basket")
     return json.loads(base64.b64decode(basket_cookie.encode('ascii')).decode('ascii')) if basket_cookie is not None else {}
 
-
+#sets the basket cookie
 def set_basket(res, user_basket):
     res.set_cookie("basket", base64.b64encode(json.dumps(user_basket).encode('ascii')).decode('ascii'), samesite="Strict")
     return res
+
+

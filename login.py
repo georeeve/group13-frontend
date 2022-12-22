@@ -8,6 +8,7 @@ from register import register
 
 login = Blueprint(__name__, "login")
 
+# routing for signIn landing page
 @login.route("/")
 def signInLanding():
 
@@ -15,7 +16,7 @@ def signInLanding():
     #allows for passing of html to Python, can also pass variables INTO the html
     return render_template("login.html")
 
-
+#get and post request 
 @login.route("/session", methods = ['GET', 'POST'])
 def signin():
 
