@@ -92,7 +92,3 @@ def add_item():
         samesite="Strict",
     )
     return res
-
-
-if __name__ == "__main__":
-    home.run()

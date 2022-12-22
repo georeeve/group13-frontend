@@ -7,7 +7,7 @@ checkout = Blueprint("checkout", "checkout")
 
 
 @checkout.route("/")
-def get_checkout():
+def checkout_get():
     token = request.cookies.get("token")
 
     if token is None:
@@ -21,7 +21,7 @@ def get_checkout():
 
 
 @checkout.route("/", methods=["POST"])
-def post_checkout():
+def checkout_post():
     token = request.cookies.get("token")
     user_basket = get_basket(request)
 
@@ -38,7 +38,3 @@ def post_checkout():
     else:
         items, price = get_basket_data_items(user_basket)
         return render_template("checkout.html", items=items)
-
-
-if __name__ == "__main__":
-    checkout.run()
