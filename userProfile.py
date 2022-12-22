@@ -8,18 +8,8 @@ userprofile = Blueprint(__name__, "userprofile")
 
 @userprofile.route('/', methods=['GET', 'POST'])
 def userProfile():
-    userDict, admin = load_userData()
-    print(userDict, admin)
 
-    # allUsers = load_AllUsers()
-    # print(type(allUsers))
-
-    if request.method == 'GET':
-        template = 'userProfile.html' if not admin else 'userProfileAdmin.html'
-        userRes = make_response(render_template(template, user=userDict))
-        return userRes
-
-    elif request.method == 'POST':
+    if request.method == 'POST':
         form_data = request.form
 
         data = request.form.to_dict()
@@ -29,14 +19,21 @@ def userProfile():
                 del data[key]
 
         token = request.cookies.get('token')
-        update = requests.patch('http://localhost:8080/api/v1/user',
+        requests.patch('http://localhost:8080/api/v1/user',
                                 json=data, headers={"Authorization": "Bearer " + token})
 
-        userDict = load_userData()
+    userDict = load_userData()
+    allUsers = load_AllUsers()
+    print(type(allUsers))
 
-        template = 'userProfile.html' if not admin else 'userProfileAdmin.html'
+    if userDict['admin'] is True:
+        template = 'userProfileAdmin.html'
+        userRes = make_response(render_template(template, user=userDict, allUsers=allUsers))
+    else:
+        template = 'userProfile.html'
         userRes = make_response(render_template(template, user=userDict))
-        return userRes
+
+    return userRes
 
 
 def load_userData():
@@ -45,12 +42,11 @@ def load_userData():
                             headers={"Authorization": "Bearer " + token})
 
     userDict = response.json()
-    return userDict, userDict["admin"]
+    return userDict
 
 
 def load_AllUsers():
     token = request.cookies.get('token')
     response = requests.get("http://localhost:8080/api/v1/admin/users",
                             headers={"Authorization": "Bearer " + token})
-
     return response.json()
