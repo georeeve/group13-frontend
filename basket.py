@@ -26,9 +26,15 @@ def basketlanding():
 def add_item():
     data = request.get_json()
     user_basket = get_basket(request)
+
     item_id = data['itemId']
-    new_quantity = int(data['quantity'])
+
+    response = requests.get("http://localhost:8080/api/v1/items/" + item_id)
+    item = response.json()
+
+    new_quantity = max(min(int(data['quantity']), item['quantity']), 1)
     user_basket[item_id] = new_quantity
+
     res = make_response()
     return set_basket(res, user_basket)
 

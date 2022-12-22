@@ -2,7 +2,7 @@
 import base64
 import json
 
-from flask import Blueprint, render_template, request, make_response
+from flask import Blueprint, render_template, request, make_response, flash
 import requests
 import math
 # request allows us to do profile?name= in browser
@@ -44,7 +44,7 @@ def getItems():
     res = render_template('index.html', items=items, pages=pages, start=start, end=end, length=length, categories=categories)
     return res
 
-#routing for add item button to the basket 
+#routing for add item button to the basket
 @home.route("/add", methods=['POST'])
 def add_item():
     data = request.get_json()
@@ -54,12 +54,15 @@ def add_item():
 
     item_id = data['itemId']
 
-    res = requests.get("http://localhost:8080/api/v1/items/" + item_id)
-    item = res.json()
+    response = requests.get("http://localhost:8080/api/v1/items/" + item_id)
+    item = response.json()
 
     current_quantity = basket[item_id] if basket.get(item_id) is not None else 0
     to_add_quantity = int(data['quantity'])
     total_quantity = max(min(current_quantity + to_add_quantity, item['quantity']), 1)
+    changed = current_quantity != total_quantity
+    if not changed:
+        flash("No more items available")
 
     basket[item_id] = total_quantity
 
