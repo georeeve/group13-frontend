@@ -1,7 +1,7 @@
 import requests
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 
-from src.utils.basket_util import get_basket_data_items, get_basket
+from utils.basket_util import get_basket_data_items, get_basket
 
 checkout = Blueprint("checkout", "checkout")
 

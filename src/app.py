@@ -4,19 +4,19 @@
 from flask import Flask
 
 # importing views/routes
-from src.routes.home import home
+from routes.home import home
 
-from src.routes.login import login
+from routes.login import login
 
-from src.routes.logout import logout
+from routes.logout import logout
 
-from src.routes.register import register
+from routes.register import register
 
-from src.routes.userprofile import userprofile
+from routes.userprofile import userprofile
 
-from src.routes.basket import basket
+from routes.basket import basket
 
-from src.routes.checkout import checkout
+from routes.checkout import checkout
 
 # from login import resetpassword
 

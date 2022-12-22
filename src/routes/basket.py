@@ -10,7 +10,7 @@ from flask import (
 )
 import requests
 
-from src.utils.basket_util import get_basket, get_basket_data_items, set_basket
+from utils.basket_util import get_basket, get_basket_data_items, set_basket
 
 # request allows us to do profile?name= in browser
 
