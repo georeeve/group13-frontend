@@ -3,7 +3,7 @@
     <form method="POST">
         <div class="mb-3">
             <label for="email">Email</label>
-            <input type="email" class="form-control" placeholder="{{email}}" name="email" id="floatingInput">
+            <input type="email" class="form-control" placeholder="{{user.email}}" name="email" id="floatingInput">
         </div>
         <div class="mb-3">
             <label for="password">Password</label>
@@ -11,31 +11,33 @@
         </div>
         <div class="mb-3">
             <label for="firstName">First Name</label>
-            <input type="text" class="form-control" placeholder="{{name}}" name="firstName" id="firstName">
+            <input type="text" class="form-control" placeholder="{{user.firstName}}" name="firstName" id="firstName">
         </div>
         <div class="mb-3">
             <label for=" lastName">Last Name</label>
-            <input type="text" class="form-control" placeholder="{{lastname}}" name="lastName" id="lastName">
+            <input type="text" class="form-control" placeholder="{{user.lastName}}" name="lastName" id="lastName">
         </div>
         <div class="mb-3">
             <label for="dob">Date of Birth</label>
-            <input type="date" class="form-control" placeholder="{{dob}}" name="dob" id="dob">
+            <input type="date" class="form-control" placeholder="{{user.dob}}" name="dob" id="dob">
         </div>
         <div class="mb-3">
             <label for="addressLine1">Address Line 1</label>
-            <input type="text" class="form-control" placeholder="{{address}}" name="addressLine1" id="addressLine1">
+            <input type="text" class="form-control" placeholder="{{user.addressLine1}}" name="addressLine1"
+                id="addressLine1">
         </div>
         <div class="mb-3">
             <label for="addressLine2">Address Line 2</label>
-            <input type="text" class="form-control" placeholder="{{addressTwo}}" name="addressLine2" id="addressLine2">
+            <input type="text" class="form-control" placeholder="{{user.addressLine2}}" name="addressLine2"
+                id="addressLine2">
         </div>
         <div class="mb-3">
             <label for="city">City</label>
-            <input type="text" class="form-control" placeholder="{{city}}" name="city" id="city">
+            <input type="text" class="form-control" placeholder="{{user.city}}" name="city" id="city">
         </div>
         <div class="mb-3">
             <label for="postCode">Post Code</label>
-            <input type="text" class="form-control" placeholder="{{postCode}}" name="postCode" id="postCode">
+            <input type="text" class="form-control" placeholder="{{user.postCode}}" name="postCode" id="postCode">
         </div>
         <div>
             <button class="btn btn__main" type="submit">Submit</button>
