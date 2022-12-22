@@ -14,9 +14,12 @@ basket = Blueprint(__name__, "basket")
 #creating / routes
 
 #routing to main basket page
-@basket.route("/", methods = ['GET','POST'])
+@basket.route("/", methods = ['GET'])
 def basketlanding():
     user_basket = get_basket(request)
+    if not user_basket:
+        flash("You do not have any items in your basket")
+        return redirect(url_for("home.getItems"))
 
     items, total_price = get_basket_data_items(user_basket)
     return render_template("basket.html", items=items, total_price=total_price)
