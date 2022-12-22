@@ -17,7 +17,7 @@ def get_checkout():
     user_basket = get_basket(request)
     items, price = get_basket_data_items(user_basket)
 
-    return render_template("checkout.html", items=items)
+    return render_template("checkout.html", items=items, total=price)
 
 
 @checkout.route("/", methods=["POST"])

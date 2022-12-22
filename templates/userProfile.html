@@ -14,7 +14,6 @@
   {% include 'components/modal.html' %}
   <header class="header d-flex justify-content-between align-items-center">
     {% include 'components/logo-header.html' %}
-    {% include 'components/header-userprofile-signout.html' %}
     <div class="d-flex">
       <div class="me-3">
         <h4>My Profile</h4>
@@ -23,6 +22,7 @@
       <button class="header__pagelinks__anchor btn align-self-center">
         <a href={{url_for('home.getItems')}}>Return to Home Page</a>
       </button>
+      {% include 'components/header-userprofile-signout.html' %}
     </div>
   </header>
   <div class="container">
@@ -48,7 +48,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
     integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
     crossorigin="anonymous"></script>
-    <script src = "../static/dob.js"></script>
+  <script src="../static/dob.js"></script>
 </body>
 
 </html>
