@@ -20,10 +20,13 @@
       <div class="total__body">
         <h5 class="total__title">Dummy Data</h5>
 
-        <div class="dummy__item">Item name</div>
-        <div class="dummy__delivery">Description</div>
-        <div class="dummy__price">Price</div>
+        {% for item in items %}
+            <div>{{ item.name }}</div>
+            <div>{{ item.selected_quantity }}</div>
+            <div>£{{ "%.2f"|format(item.price * item.selected_quantity) }}</div>
+        {% endfor %}
       </div>
+    </div>
   </main>
 
   <aside>
@@ -46,13 +49,8 @@
         <option value="12:30AM-1:00PM">12:30AM-1:00PM</option>
       </select>
 
-      <button type="button" class="btn btn__main">
-        <a href="{{url_for('home.getItems')}}">Return</a></button>
-
-      <button type="button" class="btn btn__main">
-        <a href="{{url_for('home.getItems')}}">Checkout</a></button>
-    </div>
-    </div>
+      <a class="btn btn__main" href="{{url_for('home.getItems')}}">Checkout</a>
+      <a class="btn btn__main" href="{{url_for('basket.basketlanding')}}">Return to Basket</a>
     </div>
   </aside>
   {% include 'components/footer.html' %}

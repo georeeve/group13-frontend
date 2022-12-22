@@ -12,9 +12,11 @@ from logout import logout
 
 from register import register
 
+from userProfile import userprofile
+
 from basket import basket
 
-from userProfile import userprofile
+from checkout import checkout
 
 # from login import resetpassword
 
@@ -33,9 +35,11 @@ app.register_blueprint(logout, url_prefix="/logout")
 
 app.register_blueprint(register, url_prefix="/register")
 
+app.register_blueprint(userprofile, url_prefix="/userprofile")
+
 app.register_blueprint(basket, url_prefix="/basket")
 
-app.register_blueprint(userprofile, url_prefix="/userprofile")
+app.register_blueprint(checkout, url_prefix="/checkout")
 
 
 

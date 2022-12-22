@@ -68,11 +68,5 @@ def add_item():
     res.set_cookie("basket", base64.b64encode(json.dumps(basket).encode('ascii')).decode('ascii'), samesite="Strict")
     return res
 
-#routing to the checkout page from basket
-@home.route("/checkout")
-def checkout():
-    return render_template("checkout.html")
-
-
 if __name__ == '__main__':
     home.run()
