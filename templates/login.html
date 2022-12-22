@@ -9,6 +9,7 @@
     <title>Green Basket - Log In</title>
 </head>
 <body>
+  {% include 'components/modal.html' %}
   <header class="header d-flex justify-content-center align-items-center">
     {% include 'components/logo-header.html' %}
   </header>
@@ -17,7 +18,7 @@
         <form action='/login/session' method ='POST'>
           <p class="text-danger">{{msg}}</p>
           <section class="form-floating mb-3">
-            <input 
+            <input
             type="email"
             name="email"
             class="form-control"
@@ -26,18 +27,19 @@
             <label for="email">Email address</label>
           </section>
           <section class="form-floating mb-3">
-            <input 
+            <input
               type="password"
               name="password"
               class="form-control"
               id="password"
               placeholder="Password" />
             <label for="password">Password</label>
-            <p class="form-text">Forgot <a href="#">Password</a></p>
+            <p class="form-text">Forgot <a href="{{url_for('login.reset_password')}}">Password</a></p>
           </section>
           <section class="mb-3">
             <button type="submit" class="btn btn__main">Sign in</button>
-            <button type="button" class="btn btn__main"  action={{url_for('home.getItems')}}>Cancel</button>
+            <button type="button" class="btn btn__main">
+              <a href="{{url_for('home.getItems')}}">Cancel</a>
           </section>
           <section class="form__links row">
             <p class="form-text"> <a href="{{url_for('register.registering')}}">Sign Up Here</a></p>
@@ -56,5 +58,6 @@
     integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
     crossorigin="anonymous"
   ></script>
+  {% include 'components/modal-script.html' %}
 </body>
 </html>

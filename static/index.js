@@ -42,12 +42,3 @@ function handleSmallerSize(e) {
 
 mobileMediaQuery.addEventListener("change", handleSmallerSize);
 handleSmallerSize(mobileMediaQuery);
-
-// function showModal() {
-const logOutModal = new bootstrap.Modal(
-  document.getElementById("log-out-modal")
-);
-
-function showModal(isLoggedOut) {
-  if (isLoggedOut) logOutModal.show();
-}

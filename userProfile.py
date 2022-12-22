@@ -1,58 +1,66 @@
 from flask import Blueprint, render_template, request, url_for, make_response
 
 import requests
+import json
 
 userprofile = Blueprint(__name__, "userprofile")
 
-@userprofile.route('/', methods = ['GET', 'PATCH'])
+
+# Takes user to profile page, based on if they are an admin or not
+@userprofile.route('/', methods=['GET', 'POST'])
 def userProfile():
-    token = request.cookies.get('token')
-    response = requests.get("http://localhost:8080/api/v1/user", headers={"Authorization": "Bearer " + token})
-    
-    response_admin = response.json()
-    email = response.json()["email"]
-    name = response.json()["firstName"]
-    lastname = response.json()["lastName"]
-    address = response.json()["addressLine1"]
-    addressTwo = response.json()["addressLine2"]
-    city = response.json()["city"]
-    postCode = response.json()["postCode"]
+    # POST and patch for user information change
+    if request.method == 'POST':
+        form_data = request.form
+        data = request.form.to_dict()
+        for key, val in form_data.items():
+            if val == '':
+                del data[key]
 
-    print(response_admin)
-    
+        token = request.cookies.get('token')
 
-    if response_admin["admin"] == True:
+        if 'mgt-submit' in form_data.keys():
+            data['id'] = form_data.get('id')
+            requests.patch('http://localhost:8080/api/v1/admin/users',
+                           json=data, headers={"Authorization": "Bearer " + token})
 
-            usersResponse = requests.get("http://localhost:8080/api/v1/admin/users", headers={"Authorization": "Bearer " + token})
-            adminCookie = request.cookies.get("token")
-            users = usersResponse.json()
-            print(users)
-            adminRes = make_response(render_template('userProfileAdmin.html', email=email, name=name, lastname=lastname, address=address, addressTwo=addressTwo, city=city, postCode=postCode ))
+        if 'personal-submit' in form_data.keys():
+            requests.patch('http://localhost:8080/api/v1/user',
+                           json=data, headers={"Authorization": "Bearer " + token})
 
-            return adminRes
+    # loads current user page
+    userDict = load_userData()
 
+    # loads get request for all users, used later for admin area
+    allUsers = load_AllUsers()
+
+    # redirection for admin page or regular user page
+    if userDict['admin'] is True:
+        template = 'userProfileAdmin.html'
+        userRes = make_response(render_template(
+            template, user=userDict, allUsers=allUsers))
     else:
-        if request.method == 'GET':
-            userRes = make_response(render_template('userProfile.html',email=email,name=name, lastname=lastname, address=address, addressTwo=addressTwo, city=city, postCode=postCode))
-            return userRes
+        template = 'userProfile.html'
+        userRes = make_response(render_template(template, user=userDict))
 
-        elif request.method == 'PATCH':
-            update = requests.patch('http://localhost:8080/api/v1/user', json={
-            "email": request.form["email"],
-            "password": request.form["password"],
-            "firstName": request.form["firstName"],
-            "lastName": request.form["lastName"],
-            "dob": request.form["dob"],
-            "addressLine1": request.form["addressLine1"],
-            "addressLine2": request.form["addressLine2"],
-            "city": request.form["city"],
-            "postCode": request.form["postCode"]
-            })
-            
-            userUpdate = update.json()
+    return userRes
 
-            return update
-        
-       
+# loads the user information
 
 
+def load_userData():
+    token = request.cookies.get('token')
+    response = requests.get("http://localhost:8080/api/v1/user",
+                            headers={"Authorization": "Bearer " + token})
+
+    userDict = response.json()
+    return userDict
+
+# loads the information for all users which is then given to the adminpage
+
+
+def load_AllUsers():
+    token = request.cookies.get('token')
+    response = requests.get("http://localhost:8080/api/v1/admin/users",
+                            headers={"Authorization": "Bearer " + token})
+    return response.json()

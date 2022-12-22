@@ -1,15 +1,13 @@
-<div class="container-sm test" style="width: 18rem">
-  <div class="total__body">
-    <h5 class="total__title">Checkout</h5>
-    <div class="row">
-      <div class="col">
-        <div class="total__item">Subtotal</div>
-        <div class="total__delivery">Delivery</div>
-        <div class="total__price">Final Price</div>
-        <button type="button" class="btn btn__main">
-          <a href="{{url_for('home.getItems')}}">Go to Checkout</a>
-        </button>
-      </div>
-    </div>
+{% set delivery = 5 %}
+<div class="container-sm basket__product_card total__card">
+  <div class="row mb-3 border-bottom border-2">
+    <h5 class="total__title">Basket</h5>
+  </div>
+  <div class="row mb-3">
+    <p class="col total__subtotal">Subtotal</p>
+    <p class="col total__sub-price">£{{ "%.2f"|format(total_price) }}</p>
+  </div>
+  <div class="row">
+    <a class="btn btn__main btn__checkout" href="{{url_for('checkout.get_checkout')}}">Go to Checkout</a>
   </div>
 </div>

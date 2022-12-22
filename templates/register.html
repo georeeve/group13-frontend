@@ -71,7 +71,7 @@
         <section class="form-floating mb-3">
           <input
             type="date"
-            class="form-control"
+            class="form-control dob"
             placeholder="Date of Birth"
             name="dob"
             id="dob"
@@ -129,6 +129,8 @@
           </div>
         </div>
         <button class="btn btn__main" type="submit">Register</button>
+        <button type="button" class="btn btn__main">
+          <a href="{{url_for('home.getItems')}}">Cancel</a>
       </form>
     </main>
     
@@ -143,6 +145,9 @@
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
       integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
       crossorigin="anonymous"
-    ></script>
+    ></script>    
+    <script src = "../static/dob.js">
+    </script>
+
   </body>
 </html>

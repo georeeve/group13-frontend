@@ -5,21 +5,12 @@ pip3 install requests
 
 ##TODO
 
-1.  fix pagination - url
-2.  promt for basket - sign in/register - //redirect working, flash being temperamental//
-
-3.  select delivery slot
-
-##DONE
-
-3.  basket return to home
-4.  modal when signing out
-5.  add button - save to basket
-6.  html skeleton for admin/user page
-7.  css for log in/register
-
-extras:
-_. images for item
-_. address lookup
-_. basket db
-_. session id linked to session id
+1. fix pagination - url
+2. patch request for admin user update -- ANA
+3. flash user at the appropriate time -- GEORGE
+4. warning when adding too many items -- GEORGE
+5. checkout css -- ANA
+   -. fix sign out button location
+6. dates -- TYLER
+   -. dob validation
+   -. delivery date

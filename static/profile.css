@@ -1,0 +1,15 @@
+@import url("style.css");
+@import url("styles/header.css");
+@import url("styles/footer.css");
+
+.users__container {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.mgt__container {
+  background-color: var(--colour-subdued);
+  padding: 0.5rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
