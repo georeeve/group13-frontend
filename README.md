@@ -9,8 +9,8 @@ pip3 install requests
 2. redirect to sign in
 3. fix pagination - url
 4. validation patch
-5. user management area
-6. profile add sign out
+
+
 7. dummy data for previous orders
 8. checkout
    -. route
@@ -19,6 +19,8 @@ pip3 install requests
 GEORGE - checkout
 TYLER/ANA - user managment
 
+6. profile add sign out
+5. user management area
 4. promt for basket - sign in/register - //redirect working, flash being temperamental//
 5. select delivery slot
 6. -/+/delete button funtionality -- GEORGE

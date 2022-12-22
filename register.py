@@ -5,12 +5,12 @@ from flask import Blueprint, render_template, request, jsonify, redirect, url_fo
 
 register = Blueprint(__name__, "register")
 
+#route for loading registering page
 @register.route("/")
 def registering():
-    #allows for passing of html to Python, can also pass variables INTO the html
     return render_template("register.html")
 
-
+#creates user based on form inputs which are POSTed in JSON format to the server
 @register.route("/createuser", methods = ['GET','POST'])
 def create_user():
     response = requests.post('http://localhost:8080/api/v1/user', json={
@@ -25,12 +25,14 @@ def create_user():
         "postCode": request.form["postCode"]
     })
 
+    #error message catching based on returned status code
     if response.status_code == 400:
         response_body = response.json()
         msg = response_body["message"]
         res = make_response(render_template("register.html", msg=msg))
         return res, msg
 
+    #user will be created and taken to the user area once registered, cookie created and set
     else:
         response_header= response.json()
         print(response_header)
