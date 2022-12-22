@@ -17,8 +17,15 @@
       <div class="row align-items-center">
         <div class="col-8">
           <form id="item-{{ item.id }}" class="update-item">
-            <input type="number" name="quantity" class="basket__product_quantity" id="quantity" min="0"
-              value="{{ item.selected_quantity }}" />
+            <input
+              type="number"
+              name="quantity"
+              class="basket__product_quantity"
+              id="quantity"
+              min="1"
+              max="{{ item.quantity }}"
+              value="{{ item.selected_quantity }}"
+            />
             <button class="btn__main btn__round" aria-label="update item">
               Update
             </button>
