@@ -14,10 +14,9 @@ home = Blueprint(__name__, "home")
 @home.route("/", methods = ['GET'])
 def getItems():
     response = requests.get('http://localhost:8080/api/v1/items')
-    #print (response.json())
-    categoriesRes = requests.get('http://localhost:8080/api/v1/categories')
+    categories_res = requests.get('http://localhost:8080/api/v1/categories')
 
-    categories = categoriesRes.json()
+    categories = categories_res.json()
     items = response.json()
 
     pages = math.ceil(len(items)/24)
@@ -36,12 +35,9 @@ def getItems():
         length = int(args.get('length'))
 
     if args.get('category') is not None:
-        print(items)
-
         items = list(filter(lambda item: item['category']['id'] == int(args.get('category')), items))
-        print(items)
 
-    res = render_template('index.html', items=items, pages=pages, start=start, end=end, length=length, categories=categories)
+    res = render_template('index.html', items=items, pages=pages, start=start, end=end, length=length, categories=categories, selected_category=args.get('category'))
     return res
 
 #routing for add item button to the basket
