@@ -5,20 +5,33 @@ pip3 install requests
 
 ##TODO
 
-1.  fix pagination - url
-2.  promt for basket - sign in/register - //redirect working, flash being temperamental//
-3. select delivery slot
-4. -/+/delete button funtionality -- GEORGE
+1. there are no more products error toast
+2. redirect to sign in
+3. fix pagination - url
+4. validation patch
+5. user management area
+6. profile add sign out
+7. dummy data for previous orders
+8. checkout
+   -. route
+   -. list items
+
+GEORGE - checkout
+TYLER/ANA - user managment
+
+4. promt for basket - sign in/register - //redirect working, flash being temperamental//
+5. select delivery slot
+6. -/+/delete button funtionality -- GEORGE
    _. update tolal price per item
    _. checkout - uptade total
-5. styling -- ANA
-6. Fix links -- WIKI
-_. password to fake email has been sent page - return to home link
-_. checkout button - fake checkout page with delivery slots 
-_. logo link to homepage
-_. register cancel button 
-_. foot github link - front end and back end link 
-_. checkout - fake checkout page 
+7. styling -- ANA
+8. Fix links -- WIKI
+   _. password to fake email has been sent page - return to home link
+   _. checkout button - fake checkout page with delivery slots
+   _. logo link to homepage
+   _. register cancel button
+   _. foot github link - front end and back end link
+   _. checkout - fake checkout page
 
 ##DONE
 
