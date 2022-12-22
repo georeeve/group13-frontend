@@ -1,25 +1,13 @@
 {% set delivery = 5 %}
 <div class="container-sm basket__product_card total__card">
   <div class="row mb-3 border-bottom border-2">
-    <h5 class="total__title">Total</h5>
+    <h5 class="total__title">Basket</h5>
   </div>
   <div class="row mb-3">
     <p class="col total__subtotal">Subtotal</p>
     <p class="col total__sub-price">£{{ "%.2f"|format(total_price) }}</p>
   </div>
-  <div class="row pb-3 border-bottom border-1 border-dark">
-    <p class="col total__delivery">Delivery</p>
-    <p class="col total__sub-price">from £{{"%.2f"|format(delivery)}}</p>
-  </div>
-  <div class="row pt-3">
-    <p class="col total__price">Final Price</p>
-    <p class="col total__sub-price">
-      £{{"%.2f"|format(total_price + delivery)}}
-    </p>
-  </div>
   <div class="row">
-    <button type="button" class="btn btn__main btn__checkout">
-      <a href="{{url_for('home.checkout')}}">Go to Checkout</a>
-    </button>
+    <a class="btn btn__main btn__checkout" href="{{url_for('checkout.get_checkout')}}">Go to Checkout</a>
   </div>
 </div>
