@@ -1,18 +1,18 @@
 import requests
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 
-from basket_utils import get_basket_data_items, get_basket
+from src.utils.basket_util import get_basket_data_items, get_basket
 
-checkout = Blueprint(__name__, "checkout")
+checkout = Blueprint("checkout", "checkout")
 
 
 @checkout.route("/")
 def get_checkout():
-    token = request.cookies.get('token')
+    token = request.cookies.get("token")
 
     if token is None:
         flash("Please sign in first", "info")
-        return redirect(url_for('login.signInLanding'))
+        return redirect(url_for("login.signin_get"))
 
     user_basket = get_basket(request)
     items, price = get_basket_data_items(user_basket)
@@ -25,11 +25,14 @@ def post_checkout():
     token = request.cookies.get("token")
     user_basket = get_basket(request)
 
-    response = requests.post("http://localhost:8080/api/v1/checkout",
-                             json=user_basket, headers={"Authorization": "Bearer " + token})
+    response = requests.post(
+        "http://localhost:8080/api/v1/checkout",
+        json=user_basket,
+        headers={"Authorization": "Bearer " + token},
+    )
     if response.status_code == 200:
         flash("You have successfully checked out", "info")
-        res = redirect(url_for("home.getItems"))
+        res = redirect(url_for("home.items_get"))
         res.delete_cookie("basket")
         return res
     else:
@@ -37,5 +40,5 @@ def post_checkout():
         return render_template("checkout.html", items=items)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     checkout.run()
