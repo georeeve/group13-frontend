@@ -9,6 +9,7 @@
     <title>Green Basket - Log In</title>
 </head>
 <body>
+  {% include 'components/modal.html' %}
   <header class="header d-flex justify-content-center align-items-center">
     {% include 'components/logo-header.html' %}
   </header>
@@ -17,7 +18,7 @@
         <form action='/login/session' method ='POST'>
           <p class="text-danger">{{msg}}</p>
           <section class="form-floating mb-3">
-            <input 
+            <input
             type="email"
             name="email"
             class="form-control"
@@ -26,7 +27,7 @@
             <label for="email">Email address</label>
           </section>
           <section class="form-floating mb-3">
-            <input 
+            <input
               type="password"
               name="password"
               class="form-control"
@@ -57,5 +58,6 @@
     integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
     crossorigin="anonymous"
   ></script>
+  {% include 'components/modal-script.html' %}
 </body>
 </html>
