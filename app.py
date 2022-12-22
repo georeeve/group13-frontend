@@ -42,7 +42,6 @@ app.register_blueprint(basket, url_prefix="/basket")
 app.register_blueprint(checkout, url_prefix="/checkout")
 
 
-
 #setting port and initialising
 if __name__ == '__main__':
     app.run(debug=True, port = 8000)
