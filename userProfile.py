@@ -23,7 +23,8 @@ def userProfile():
 
     if response_admin["admin"] == True:
 
-            usersResponse = requests.get("http://localhost:8080/api/v1/users", headers={"Authorization": "Bearer " + token})
+            usersResponse = requests.get("http://localhost:8080/api/v1/admin/users", headers={"Authorization": "Bearer " + token})
+            adminCookie = request.cookies.get("token")
             users = usersResponse.json()
             print(users)
             adminRes = make_response(render_template('userProfileAdmin.html', email=email, name=name, lastname=lastname, address=address, addressTwo=addressTwo, city=city, postCode=postCode ))
