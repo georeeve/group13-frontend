@@ -6,11 +6,8 @@ pip3 install requests
 ##TODO
 
 1. fix pagination - url
-2. patch request for admin user update -- ANA
-3. flash user at the appropriate time -- GEORGE
-4. warning when adding too many items -- GEORGE
-5. checkout css -- ANA
+2. warning when adding too many items -- GEORGE
+3. checkout css -- ANA
    -. fix sign out button location
-6. dates -- TYLER
-   -. dob validation
+4. dates -- TYLER
    -. delivery date
