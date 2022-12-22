@@ -11,8 +11,9 @@ from basket_utils import get_basket_data_items, get_basket, set_basket
 #initialise Blueprint
 basket = Blueprint(__name__, "basket")
 
-#creating / route
+#creating / routes
 
+#routing to main basket page
 @basket.route("/", methods = ['GET','POST'])
 def basketlanding():
     user_basket = get_basket(request)
@@ -20,24 +21,18 @@ def basketlanding():
     items, total_price = get_basket_data_items(user_basket)
     return render_template("basket.html", items=items, total_price=total_price)
 
-
+#adds items to the basket, also prompts user to sign in if they add an item without being signed in
 @basket.route("/update", methods=['POST'])
 def add_item():
     data = request.get_json()
     user_basket = get_basket(request)
-
     item_id = data['itemId']
-
-    res = requests.get("http://localhost:8080/api/v1/items/" + item_id)
-    item = res.json()
-
     new_quantity = int(data['quantity'])
-    total_quantity = max(min(new_quantity, item['quantity']), 1)
-    user_basket[item_id] = total_quantity
-
+    user_basket[item_id] = new_quantity
     res = make_response()
     return set_basket(res, user_basket)
 
+#deleting items from the basket
 @basket.route("/delete", methods=['POST'])
 def delete_item():
     data = request.get_json()

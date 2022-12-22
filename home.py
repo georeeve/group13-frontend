@@ -10,7 +10,7 @@ import math
 # initialise Blueprint
 home = Blueprint(__name__, "home")
 
-
+#route for main home page, also gets the items from the database for rendering onto the home page
 @home.route("/", methods = ['GET'])
 def getItems():
     response = requests.get('http://localhost:8080/api/v1/items')
@@ -44,10 +44,11 @@ def getItems():
     res = render_template('index.html', items=items, pages=pages, start=start, end=end, length=length, categories=categories)
     return res
 
-
+#routing for add item button to the basket 
 @home.route("/add", methods=['POST'])
 def add_item():
     data = request.get_json()
+    #gets the current basket cookie
     basket_cookie = request.cookies.get("basket")
     basket = json.loads(base64.b64decode(basket_cookie.encode('ascii')).decode('ascii')) if basket_cookie is not None else {}
 
@@ -63,9 +64,9 @@ def add_item():
     basket[item_id] = total_quantity
 
     res = make_response()
+    #wsets the json of the current basket into the cookie, saving the currently added items
     res.set_cookie("basket", base64.b64encode(json.dumps(basket).encode('ascii')).decode('ascii'), samesite="Strict")
     return res
-
 
 if __name__ == '__main__':
     home.run()
