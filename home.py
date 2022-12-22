@@ -50,10 +50,18 @@ def add_item():
     data = request.get_json()
     basket_cookie = request.cookies.get("basket")
     basket = json.loads(base64.b64decode(basket_cookie.encode('ascii')).decode('ascii')) if basket_cookie is not None else {}
+
     item_id = data['itemId']
+
+    res = requests.get("http://localhost:8080/api/v1/items/" + item_id)
+    item = res.json()
+
     current_quantity = basket[item_id] if basket.get(item_id) is not None else 0
     to_add_quantity = int(data['quantity'])
-    basket[item_id] = current_quantity + to_add_quantity
+    total_quantity = max(min(current_quantity + to_add_quantity, item['quantity']), 1)
+
+    basket[item_id] = total_quantity
+
     res = make_response()
     res.set_cookie("basket", base64.b64encode(json.dumps(basket).encode('ascii')).decode('ascii'), samesite="Strict")
     return res

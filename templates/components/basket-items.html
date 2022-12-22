@@ -22,7 +22,8 @@
               name="quantity"
               class="basket__product_quantity"
               id="quantity"
-              min="0"
+              min="1"
+              max="{{ item.quantity }}"
               value="{{ item.selected_quantity }}"
             />
             <button class="btn__main btn__round" aria-label="update item">
