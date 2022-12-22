@@ -16,6 +16,7 @@ async function addToBasket(form, e) {
     headers: { "Content-Type": "application/json" },
   });
   updateBasketPill();
+  location.reload();
 }
 
 function getCookie(name) {
