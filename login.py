@@ -46,6 +46,7 @@ def signin():
         res = make_response(render_template("login.html", msg=msg))
         return res
 
+#route for resetting user password
 @login.route("/resetpassword")
 def reset_password():
     return render_template("resetpassword.html")

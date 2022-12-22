@@ -19,7 +19,6 @@ def get_checkout():
 
     return render_template("checkout.html", items=items)
 
-
 @checkout.route("/", methods=["POST"])
 def post_checkout():
     token = request.cookies.get("token")

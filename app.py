@@ -23,6 +23,7 @@ from checkout import checkout
 
 #initialising app
 app = Flask(__name__)
+#needed for Flash
 app.secret_key = 'the super secret key'
 
 #calling routes
@@ -41,7 +42,6 @@ app.register_blueprint(basket, url_prefix="/basket")
 app.register_blueprint(checkout, url_prefix="/checkout")
 
 
-
-#setting port
+#setting port and initialising
 if __name__ == '__main__':
     app.run(debug=True, port = 8000)

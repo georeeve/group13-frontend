@@ -6,20 +6,12 @@ import json
 userprofile = Blueprint(__name__, "userprofile")
 
 
+#Takes user to profile page, based on if they are an admin or not
 @userprofile.route('/', methods=['GET', 'POST'])
 def userProfile():
-    userDict, admin = load_userData()
-    print(userDict, admin)
 
-    # allUsers = load_AllUsers()
-    # print(type(allUsers))
-
-    if request.method == 'GET':
-        template = 'userProfile.html' if not admin else 'userProfileAdmin.html'
-        userRes = make_response(render_template(template, user=userDict))
-        return userRes
-
-    elif request.method == 'POST':
+    #POST and patch for user information change
+    if request.method == 'POST':
         form_data = request.form
 
         data = request.form.to_dict()
@@ -29,28 +21,38 @@ def userProfile():
                 del data[key]
 
         token = request.cookies.get('token')
-        update = requests.patch('http://localhost:8080/api/v1/user',
+        requests.patch('http://localhost:8080/api/v1/user',
                                 json=data, headers={"Authorization": "Bearer " + token})
 
-        userDict = load_userData()
+    #loads current user page
+    userDict = load_userData()
 
-        template = 'userProfile.html' if not admin else 'userProfileAdmin.html'
+    #loads get request for all users, used later for admin area
+    allUsers = load_AllUsers()
+    print(type(allUsers))
+
+    #redirection for admin page or regular user page
+    if userDict['admin'] is True:
+        template = 'userProfileAdmin.html'
+        userRes = make_response(render_template(template, user=userDict, allUsers=allUsers))
+    else:
+        template = 'userProfile.html'
         userRes = make_response(render_template(template, user=userDict))
-        return userRes
 
+    return userRes
 
+#loads the user information
 def load_userData():
     token = request.cookies.get('token')
     response = requests.get("http://localhost:8080/api/v1/user",
                             headers={"Authorization": "Bearer " + token})
 
     userDict = response.json()
-    return userDict, userDict["admin"]
+    return userDict
 
-
+#loads the information for all users which is then given to the adminpage
 def load_AllUsers():
     token = request.cookies.get('token')
     response = requests.get("http://localhost:8080/api/v1/admin/users",
                             headers={"Authorization": "Bearer " + token})
-
     return response.json()
