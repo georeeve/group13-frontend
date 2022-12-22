@@ -74,6 +74,10 @@ h1 {
   color: var(--main-dark);
 }
 
+.section {
+  background-color: var(--white);
+  border-radius: 10px;
+}
 .btn__round {
   border-radius: 5px;
 }

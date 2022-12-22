@@ -1,54 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-    />
-    <link rel="stylesheet" href="{{ url_for('static',filename='home.css') }}" />
 
-    <title>Green Basket</title>
-  </head>
-  <body>
-    {% include 'components/signout-modal.html' %}
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="{{ url_for('static',filename='home.css') }}" />
+  <title>Green Basket</title>
+</head>
 
-    {% include 'components/header.html' %}
+<body>
+  {% include 'components/signout-modal.html' %}
 
-    {% include 'components/products-nav.html' %}
+  {% include 'components/header.html' %}
 
-    <div class="d-flex justify-content-center">
-      <div class="container_items" id="items-container">
+  {% include 'components/products-nav.html' %}
 
-        {% include 'components/item-card.html' %}
+  <div class="d-flex justify-content-center">
+    <div class="container_items" id="items-container">
 
-      </div>
+      {% include 'components/item-card.html' %}
+
     </div>
+  </div>
 
-    {% include 'components/pagination.html' %}
+  {% include 'components/pagination.html' %}
 
-    {% include 'components/footer.html' %}
+  {% include 'components/footer.html' %}
 
-    <!-- Separate Popper and Bootstrap JS -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-      integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-      integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-      crossorigin="anonymous"
-    ></script>
-    <script src="static/index.js"></script>
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-      <script type=text/javascript>
+  <!-- Separate Popper and Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+    crossorigin="anonymous"></script>
+  <script src="static/index.js"></script>
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  <script type=text/javascript>
         showModal(true);
       </script>
-    {% endif %} {% endwith %}
-    <script src="static/home.js"></script>
-  </body>
+  {% endif %} {% endwith %}
+  <script src="static/home.js"></script>
+</body>
+
 </html>

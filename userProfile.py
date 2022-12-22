@@ -35,7 +35,8 @@ def userProfile():
         
         token = request.cookies.get('token')
         update = requests.patch('http://localhost:8080/api/v1/user', json=data, headers={"Authorization": "Bearer " + token})
-            
+
+        print(update.status_code)    
         userRes = load_userData()
         return userRes
 
@@ -45,7 +46,7 @@ def load_userData():
     token = request.cookies.get('token')
     response = requests.get("http://localhost:8080/api/v1/user", headers={"Authorization": "Bearer " + token})
     
-    response_admin = response.json()
+    admin = response.json()["admin"]
     email = response.json()["email"]
     name = response.json()["firstName"]
     lastname = response.json()["lastName"]
@@ -54,5 +55,9 @@ def load_userData():
     city = response.json()["city"]
     postCode = response.json()["postCode"]
 
-    userRes = make_response(render_template('userProfile.html',email=email,name=name, lastname=lastname, address=address, addressTwo=addressTwo, city=city, postCode=postCode))
+    template = 'userProfile.html' if not admin else 'userProfileAdmin.html'
+    print(template)
+
+    userRes = make_response(render_template(template, email=email,name=name, lastname=lastname, address=address, addressTwo=addressTwo, city=city, postCode=postCode))
     return userRes
+    

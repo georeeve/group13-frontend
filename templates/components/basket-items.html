@@ -17,14 +17,8 @@
       <div class="row align-items-center">
         <div class="col-8">
           <form id="item-{{ item.id }}" class="update-item">
-            <input
-              type="number"
-              name="quantity"
-              class="basket__product_quantity"
-              id="quantity"
-              min="0"
-              value="{{ item.selected_quantity }}"
-            />
+            <input type="number" name="quantity" class="basket__product_quantity" id="quantity" min="0"
+              value="{{ item.selected_quantity }}" />
             <button class="btn__main btn__round" aria-label="update item">
               Update
             </button>
@@ -40,6 +34,6 @@
   </div>
 </div>
 {% endfor %}
-<button type="button" class="btn btn__main">
+<button type="button" class="btn btn__main mb-3">
   <a href="{{url_for('home.getItems')}}">Continue Shopping</a>
 </button>
