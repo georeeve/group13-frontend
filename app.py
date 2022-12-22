@@ -23,7 +23,7 @@ from userProfile import userprofile
 app = Flask(__name__)
 app.secret_key = 'the super secret key'
 
-#calling route
+#calling routes
 app.register_blueprint(home, url_prefix="/")
 
 app.register_blueprint(login, url_prefix="/login")
