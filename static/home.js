@@ -29,14 +29,20 @@ function getCookie(name) {
 }
 
 function updateBasketPill() {
+  const basketPill = document.getElementById("basket-quantity");
+
   const cookie = getCookie("basket");
   if (cookie == null) {
+    basketPill.classList.add("d-none");
+    basketPill.textContent = "0";
     return;
   }
 
   const basket = JSON.parse(atob(cookie));
 
   if (Object.keys(basket).length === 0) {
+    basketPill.classList.add("d-none");
+    basketPill.textContent = "0";
     return;
   }
 
@@ -44,12 +50,7 @@ function updateBasketPill() {
     (prev, curr) => prev + curr
   );
 
-  const basketPill = document.getElementById("basket-quantity");
 
-  if (basketPill.textContent === "0") {
-    basketPill.classList.add("d-none");
-  } else {
-    basketPill.classList.remove("d-none");
-    basketPill.textContent = currentItems;
-  }
+  basketPill.classList.remove("d-none");
+  basketPill.textContent = currentItems;
 }
