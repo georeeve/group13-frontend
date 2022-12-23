@@ -33,7 +33,7 @@ def basket_get():
     return render_template("basket.html", items=items, total_price=total_price)
 
 
-# adds items to the basket, also prompts user to sign in
+# adds items to the basket, also prompts user to log in
 # if they add an item without being signed in
 @basket.route("/update", methods=["POST"])
 def add_item():

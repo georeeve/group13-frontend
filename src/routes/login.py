@@ -7,9 +7,9 @@ import requests
 login = Blueprint("login", "login")
 
 
-# routing for signIn landing page
+# routing for log in landing page
 @login.route("/", methods=["GET"])
-def signin_get():
+def login_get():
 
     # allows for passing of html to Python, can also pass variables INTO the html
     return render_template("login.html")
@@ -17,7 +17,7 @@ def signin_get():
 
 # get and post request
 @login.route("/session", methods=["GET", "POST"])
-def signin():
+def login_session():
 
     msg = ""
 

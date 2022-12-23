@@ -11,8 +11,8 @@ def checkout_get():
     token = request.cookies.get("token")
 
     if token is None:
-        flash("Please sign in first", "info")
-        return redirect(url_for("login.signin_get"))
+        flash("Please Log in first", "info")
+        return redirect(url_for("login.login_get"))
 
     user_basket = get_basket(request)
     items, price = get_basket_data_items(user_basket)

@@ -41,12 +41,12 @@ def userprofile_get():
 
     # redirection for admin page or regular user page
     if user_dict["admin"] is True:
-        template = "userProfileAdmin.html"
+        template = "user-profile-admin.html"
         userRes = make_response(
             render_template(template, user=user_dict, allUsers=all_users)
         )
     else:
-        template = "userProfile.html"
+        template = "user-profile.html"
         userRes = make_response(render_template(template, user=user_dict))
 
     return userRes
