@@ -1,7 +1,7 @@
 # Entry point for website
 
 # importing Flask
-from flask import Flask
+from flask import Flask, render_template
 
 # importing views/routes
 from routes.home import home
@@ -44,6 +44,18 @@ app.register_blueprint(userprofile, url_prefix="/userprofile")
 app.register_blueprint(basket, url_prefix="/basket")
 
 app.register_blueprint(checkout, url_prefix="/checkout")
+
+app.errorhandler(404)
+
+# app name
+
+
+@app.errorhandler(404)
+# inbuilt function which takes error as parameter
+def not_found(e):
+
+    # defining function
+    return render_template("page_not_found.html")
 
 
 # setting port and initialising
