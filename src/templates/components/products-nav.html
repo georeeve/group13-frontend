@@ -1,18 +1,16 @@
 <nav class="nav nav__secondary d-flex">
   <div class="btn-group">
-    <button
-      class="btn btn__main dropdown-toggle"
-      type="button"
-      data-bs-toggle="dropdown"
-      aria-expanded="false"
-    >
+    <button class="btn btn__main dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
       Groceries
     </button>
-  <ul class="dropdown-menu">
-  {% for category in categories %}
-      <li><a id= '{{category.id}}' class="dropdown-item dropdown-categories" href="?category={{category.id}}">{{category.category}}</a></li>
-  {% endfor %}
-      <li><hr class="dropdown-divider" /></li>
-      <li><a class="dropdown-item" href="#">All Food</a></li>
-  </ul>
+    <ul class="dropdown-menu">
+      {% for category in categories %}
+      <li><a id='{{category.id}}' class="dropdown-item dropdown-categories"
+          href="?category={{category.id}}">{{category.category}}</a></li>
+      {% endfor %}
+      <li>
+        <hr class="dropdown-divider" />
+      </li>
+      <li><a class="dropdown-item" href="/">All Food</a></li>
+    </ul>
 </nav>

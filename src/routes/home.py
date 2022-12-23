@@ -22,10 +22,16 @@ def items_get():
     categories = categories_res.json()
     items = response.json()
 
-    pages = math.ceil(len(items) / 24)
-
     args = request.args
 
+    if args.get("category") is not None:
+        items = list(
+            filter(
+                lambda item: item["category"]["id"] == int(args.get("category")), items
+            )
+        )
+
+    pages = math.ceil(len(items) / 24)
     start = 0
     end = 24
     length = len(items)
@@ -36,13 +42,6 @@ def items_get():
         end = int(args.get("end"))
     if args.get("length") is not None:
         length = int(args.get("length"))
-
-    if args.get("category") is not None:
-        items = list(
-            filter(
-                lambda item: item["category"]["id"] == int(args.get("category")), items
-            )
-        )
 
     res = render_template(
         "index.html",
