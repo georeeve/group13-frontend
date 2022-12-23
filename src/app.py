@@ -12,6 +12,8 @@ from routes.logout import logout
 
 from routes.register import register
 
+from routes.reset_password import reset_password
+
 from routes.userprofile import userprofile
 
 from routes.basket import basket
@@ -34,6 +36,8 @@ app.register_blueprint(login, url_prefix="/login")
 app.register_blueprint(logout, url_prefix="/logout")
 
 app.register_blueprint(register, url_prefix="/register")
+
+app.register_blueprint(reset_password, url_prefix="/reset_password")
 
 app.register_blueprint(userprofile, url_prefix="/userprofile")
 
