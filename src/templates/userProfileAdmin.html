@@ -20,7 +20,7 @@
                 <p>Hello, {{user.firstName}}!</p>
             </div>
             <button class="header__pagelinks__anchor btn align-self-center">
-                <a href={{url_for('home.getItems')}}>Return to Home Page</a>
+                <a href={{url_for('home.items_get')}}>Return to Home Page</a>
             </button>
             {% include 'components/header-userprofile-signout.html' %}
         </div>
