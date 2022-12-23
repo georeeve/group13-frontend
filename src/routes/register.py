@@ -39,9 +39,9 @@ def create_user():
     # error message catching based on returned status code
     if response.status_code == 400:
         response_body = response.json()
-        msg = response_body["message"]
+        msg = ", ".join(response_body.values())
         res = make_response(render_template("register.html", msg=msg))
-        return res, msg
+        return res
 
     # user will be created and taken to the user area once registered,
     # cookie created and set
