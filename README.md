@@ -1,7 +1,6 @@
 Front-End Static Web Server Using Flask
 
-pip3 install flask
-pip3 install requests
+pip3 install flask requests black flake8 flake8-bugbear flake8-simplify
 
 ##TODO
 
